@@ -9,6 +9,7 @@ import {
 	MyLibraryPage,
 	PublicLibraryPage,
   LibraryPage,
+  Contact,
 } from './component';
 
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
@@ -46,6 +47,7 @@ const routes = (
         <Route path="my_library" component={MyLibraryPage} />
         //<Route path="public_library" component={PublicLibraryPage} />
         <Route path="library(/:id)" component={Community} />
+        <Route path="contact_us" component={Contact} />
       </Route>
 		</Router>
 	</Provider>

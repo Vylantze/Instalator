@@ -12,6 +12,8 @@ import {
     Button,
 } from 'react-bootstrap';
 
+import Contact from './Contact.js';
+
 import actions from '../../redux/actions';
 
 import { redirect } from '../util/webUtil';
@@ -59,6 +61,9 @@ export default class MainPage extends React.Component {
 						  	</Carousel>
 	        			</Col>
 	        		</Row>
+              <Row>
+                <Contact standalone='none' />
+              </Row>
         		</Grid>
 	        </div>
         );

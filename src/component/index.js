@@ -4,6 +4,7 @@ import MyLibraryPage from './MyLibraryPage.js';
 import PublicLibraryPage from './PublicLibraryPage.js';
 import LibraryPage from './LibraryPage.js';
 import Community from './Community.js';
+import Contact from './Contact.js';
 module.exports = {
 	MainPage,
 	DocumentTranslatePage,
@@ -11,4 +12,5 @@ module.exports = {
 	MyLibraryPage,
 	PublicLibraryPage,
 	LibraryPage,
+  Contact,
 }
