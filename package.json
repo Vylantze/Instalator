@@ -6,7 +6,8 @@
   "scripts": {
     "webpack": "webpack",
     "node": "babel-node --presets node6 server.babel.js",
-    "dev": "concurrently --kill-others \"npm run webpack\" \"npm run node\""
+    "dev": "concurrently --kill-others \"npm run webpack\" \"npm run node\"",
+    "start": "concurrently --kill-others \"npm run webpack\" \"npm run node\""
   },
   "author": "Huynh Phi Long",
   "license": "ISC",
@@ -19,12 +20,15 @@
     "babel-preset-node6": "^11.0.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "body-parser": "^1.17.1",
     "concurrently": "^3.4.0",
     "express": "^4.14.0",
     "fs": "0.0.1-security",
     "http-proxy": "^1.16.2",
     "lodash": "^4.17.4",
+    "multer": "^1.3.0",
     "path": "^0.12.7",
+    "pug": "^2.0.0-beta11",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",
