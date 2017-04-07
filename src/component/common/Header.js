@@ -30,8 +30,11 @@ export default class Header extends React.Component {
                </LinkContainer>
                <LinkContainer to={{ pathname: '/public_library'}}>
                   <NavItem eventKey={2}>Public Library</NavItem>
-               </LinkContainer>
+               </LinkContainer
                <NavItem eventKey={3} href="#">Profile</NavItem>
+               <LinkContainer to={{ pathname: '/community'}}>
+                  <NavItem eventKey={4}>Community</NavItem>
+               </LinkContainer>
                {
                   // <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                   //   <MenuItem eventKey={3.1}>Action</MenuItem>
