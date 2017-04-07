@@ -35,7 +35,9 @@ let store = createStore(
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
-
+const NotFound = () => (
+  <h1 style={{textAlign: 'center'}}>This page does not exist!</h1>
+);
 const routes = (
 	<Provider store={store}>
 		<Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
@@ -48,6 +50,7 @@ const routes = (
         //<Route path="public_library" component={PublicLibraryPage} />
         <Route path="library(/:id)" component={Community} />
         <Route path="contact_us" component={Contact} />
+        <Route path='*' component={NotFound} />
       </Route>
 		</Router>
 	</Provider>

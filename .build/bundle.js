@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "28a801663f11639524d7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fcc734a3576c0e9c9542"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39839,7 +39839,13 @@ var store = (0, _redux.createStore)((0, _redux.combineReducers)(_extends({}, _re
 })), (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
-
+var NotFound = function NotFound() {
+  return _react2.default.createElement(
+    'h1',
+    { style: { textAlign: 'center' } },
+    'This page does not exist!'
+  );
+};
 var routes = _react2.default.createElement(
   _reactRedux.Provider,
   { store: store },
@@ -39859,7 +39865,8 @@ var routes = _react2.default.createElement(
       '//',
       _react2.default.createElement(_reactRouter.Route, { path: 'public_library', component: _component.PublicLibraryPage }),
       _react2.default.createElement(_reactRouter.Route, { path: 'library(/:id)', component: _component.Community }),
-      _react2.default.createElement(_reactRouter.Route, { path: 'contact_us', component: _component.Contact })
+      _react2.default.createElement(_reactRouter.Route, { path: 'contact_us', component: _component.Contact }),
+      _react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
     )
   )
 );
@@ -40545,7 +40552,6 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     key: 'handleDownload',
     value: function handleDownload() {
       if (this.state.translation === "Original") {
-        console.log(this.state.link[this.state.original]);
         return _react2.default.createElement(
           _reactBootstrap.Button,
           { bsStyle: 'primary', href: this.state.link[this.state.original], download: true },
@@ -73046,7 +73052,7 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
       return _react2.default.createElement(
         'div',
         { className: 'container community-notice', style: { border: 'none', maxWidth: '400px' } },
-        'This app was created by CS3240 Group 2, hosted at ',
+        'This app was created by CS3240 Group 2, hosted on ',
         _react2.default.createElement(
           'a',
           { href: 'https://github.com/Vylantze/Instalator/' },

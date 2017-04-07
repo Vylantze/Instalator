@@ -123,7 +123,6 @@ export default class Community extends React.Component {
             
   handleDownload() {
     if (this.state.translation==="Original") {
-      console.log(this.state.link[this.state.original]);
       return (
         <Button bsStyle="primary" href={this.state.link[this.state.original]} download><b>Download</b></Button>
       );
