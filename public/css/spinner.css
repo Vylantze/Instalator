@@ -1,0 +1,14 @@
+/**
+	Spinner
+**/
+#spinnerContainer .modal-dialog .modal-content {
+	background-color: transparent;
+	box-shadow: none;
+	border: 0px;
+	text-align: center;
+	padding-top: 45%;
+}
+#spinner {
+	text-align: center;
+	color: #34A7D1;
+}

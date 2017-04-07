@@ -3,7 +3,6 @@ import {
   DECREASE_COUNT,
 } from '../actions/actionTypes';
 
-import { combineReducers } from 'redux';
 
 const initialState = {
   value: 1

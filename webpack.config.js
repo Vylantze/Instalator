@@ -1,10 +1,11 @@
 var Webpack = require('webpack');
 var path = require("path");
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 var config = {
    entry: './app/app.js',
    output: {
-      path: __dirname + '/public',
+      path: __dirname + '/.build',
       filename: 'bundle.js'
    },
 
@@ -21,7 +22,11 @@ var config = {
          }
       ]
    },
-
+   plugins: [
+      new WebpackCleanupPlugin(),
+      new Webpack.HotModuleReplacementPlugin()
+      
+   ],
    watch: true
 }
 

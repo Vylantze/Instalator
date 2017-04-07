@@ -1,5 +1,8 @@
-import FileUpload from './FileUpload';
+import Instruction from './Instruction';
+
+import LanguageSelect from './LanguageSelect';
 
 module.exports = {
-	FileUpload,
+	Instruction,
+	LanguageSelect,
 }

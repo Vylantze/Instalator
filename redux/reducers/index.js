@@ -1,9 +1,14 @@
 import count from './count';
 
-import { combineReducers } from 'redux';
+import spinner from './spinner';
 
-const reducers = combineReducers({
-  ...count,
-})
+import personalLib from './personalLib';
 
-export default reducers;
+import publicLib from './publicLib';
+
+module.exports = {
+	...count,
+ 	...spinner,
+ 	...personalLib,
+ 	...publicLib,
+}

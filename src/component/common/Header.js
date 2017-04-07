@@ -10,18 +10,27 @@ import {
    NavDropdown,
 } from 'react-bootstrap';
 
+import { LinkContainer } from 'react-router-bootstrap';
+
 export default class Header extends React.Component {
    render() {
    	return (
    		<Navbar>
             <Navbar.Header>
                <Navbar.Brand>
-                 <a href="main">Instalator</a>
+                 <span>Instalator</span>
                </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-               <NavItem eventKey={1} href="document_translate">Document Translate</NavItem>
-               <NavItem eventKey={2} href="#">Library</NavItem>
+               <LinkContainer to={{ pathname: '/document_translate'}}>
+                  <NavItem eventKey={1} href="document_translate">Document Translate</NavItem>
+               </LinkContainer>
+               <LinkContainer to={{ pathname: '/my_library'}}>
+                  <NavItem eventKey={2}>My Library</NavItem>
+               </LinkContainer>
+               <LinkContainer to={{ pathname: '/public_library'}}>
+                  <NavItem eventKey={2}>Public Library</NavItem>
+               </LinkContainer>
                <NavItem eventKey={3} href="#">Profile</NavItem>
                {
                   // <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">

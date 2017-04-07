@@ -17,8 +17,7 @@ const upload = multer({storage: storage});
 
 module.exports = function (app) {
     app.post('/data/document/upload', upload.single('file'), (req, res, next) => {
-        const fileName = req.file.filename;;
-        const filePath = req.file.path;
+        let fileName = req.file.filename;
         res.send(fileName);
     });
 }

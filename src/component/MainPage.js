@@ -35,21 +35,21 @@ export default class MainPage extends React.Component {
 	        			<Col xs={12}>
 	        				<Carousel>
 							    <Carousel.Item>
-							      	<img width={1200} height={500} alt="900x500" src="/static/img/carousel_1.png"/>
+							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_1.png"/>
 							      	<Carousel.Caption>
 								        <h3>Some description</h3>
 								       	{::this.renderGetStartBtn()}
 							      	</Carousel.Caption>
 							    </Carousel.Item>
 							    <Carousel.Item>
-							      	<img width={1200} height={500} alt="900x500" src="/static/img/carousel_2.png"/>
+							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_2.png"/>
 							      	<Carousel.Caption>
 								        <h3>Some description</h3>
 								        {::this.renderGetStartBtn()}
 							      	</Carousel.Caption>
 							    </Carousel.Item>
 							    <Carousel.Item>
-							      	<img width={1200} height={500} alt="900x500" src="/static/img/carousel_3.png"/>
+							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_3.png"/>
 							      	<Carousel.Caption>
 								        <h3>Some description</h3>
 								        {::this.renderGetStartBtn()}
