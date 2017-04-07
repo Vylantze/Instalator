@@ -1,11 +1,8 @@
 'use strict'
 
-import ReactDOM from 'react-dom'; 
-
+import ReactDOM from 'react-dom';
 import React from 'react';
-
 import { connect } from 'react-redux';
-
 import {
     DropdownButton,
     MenuItem,
@@ -16,9 +13,7 @@ import {
 } from 'react-bootstrap';
 
 import actions from '../../redux/actions';
-
 import { redirect } from '../util/webUtil';
-
 import { publishNoti } from '../util/notificationUtil';
 
 @connect((state) => state)

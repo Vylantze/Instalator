@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fcc734a3576c0e9c9542"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9d0ce922226b10a8c00b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40225,24 +40225,7 @@ var initialState = {
     link: {
       'Japanese': '/public/img/example_manga.jpg',
       'English': '/public/img/example_manga_english.png'
-    } }],
-  docList: {
-    'Cinderella Girls Theater 811': {
-      name: 'Cinderella Girls Theater 811',
-      lang: 'Japanese', // original language
-      link: {
-        'Japanese': '/public/img/example_manga.jpg',
-        'English': '/public/img/example_manga_english.png'
-      },
-      img: true, // is it an image, if it is, img details
-      imgHeight: '2103px',
-      imgWidth: '480px',
-      overlayLocations: [[83, 1.5, 13, 10], [7, 15, 13, 8], [86, 26.5, 13, 13], [1, 26.5, 16, 10], [78, 46, 16, 10], [21, 47, 16, 10], [85, 64.2, 14, 12], [1, 64.2, 20, 12], [85, 83.05, 14, 16], [1, 83.05, 19, 12]],
-      translatedLines: {
-        English: ["This is truly a refined place, isn't it?", 'Producer', 'Both the atmos-phere and the food here are top class.', 'I might have drunk too much because of that...', 'But for tonight at the very least...', 'Let us enjoy this time to the fullest', 'Oh? Am I not going to say any puns today, you ask?', 'I am not so uncivilised that I would ruin such an evening with one', 'So for this Christmas with just the two of us, let us enjoy...', 'This Holy Night, with all our migh-']
-      }
-    }
-  }
+    } }]
 };
 
 function publicLib() {
@@ -40425,6 +40408,10 @@ var _reactRedux = __webpack_require__(32);
 
 var _reactBootstrap = __webpack_require__(23);
 
+var _Database = __webpack_require__(664);
+
+var _Database2 = _interopRequireDefault(_Database);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40464,9 +40451,8 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       var id = this.props.params.id;
-      var publicLib = this.props.publicLib.docList;
-      if (id !== undefined && publicLib[id] !== undefined) {
-        var newState = _.cloneDeep(publicLib[id]);
+      if (id !== undefined && _Database2.default[id] !== undefined) {
+        var newState = _.cloneDeep(_Database2.default[id]);
         newState.translation = this.state.translation;
         newState.original = newState.lang;
         newState.image = newState.link[newState.original];
@@ -40480,11 +40466,12 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     key: 'addNode',
     value: function addNode() {
       var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Nothing';
-      var left = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.0;
-      var top = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.0;
-      var width = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.0;
-      var height = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0.0;
-      var fontSize = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 14.0;
+      var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '0';
+      var left = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.0;
+      var top = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.0;
+      var width = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0.0;
+      var height = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0.0;
+      var fontSize = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 14.0;
 
       var fixedLineHeight = this.state.imgHeight / 100;
       fontSize = fontSize.toString() + 'px';
@@ -40498,13 +40485,26 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'community-panels', style: divStyle },
+        { key: key, className: 'community-panels', style: divStyle },
         _react2.default.createElement(
           'div',
           { className: 'community-text', style: { fontSize: fontSize } },
           text
         )
       );
+    }
+  }, {
+    key: 'displayTranslation',
+    value: function displayTranslation() {
+      var language = this.state.translation;
+      var lines = this.state.translatedLines;
+      var locations = this.state.overlayLocations;
+      if (language !== Language.Original && lines !== undefined && lines[language] !== undefined && locations !== undefined) {
+        return lines[language].map(function (line, index) {
+          return this.addNode(line, index, locations[index][0], locations[index][1], locations[index][2], locations[index][3], locations[index][4]);
+        }.bind(this));
+      }
+      return _react2.default.createElement('div', null);
     }
   }, {
     key: 'changeLanguageButton',
@@ -40534,19 +40534,6 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
         { id: 'dropdown', title: this.state.translation, onSelect: handleChange },
         listOfOptions
       );
-    }
-  }, {
-    key: 'displayTranslation',
-    value: function displayTranslation() {
-      var language = this.state.translation;
-      var lines = this.state.translatedLines;
-      var locations = this.state.overlayLocations;
-      if (language !== Language.Original && lines !== undefined && lines[language] !== undefined && locations !== undefined) {
-        return lines[language].map(function (line, index) {
-          return this.addNode(line, locations[index][0], locations[index][1], locations[index][2], locations[index][3], locations[index][4]);
-        }.bind(this));
-      }
-      return _react2.default.createElement('div', null);
     }
   }, {
     key: 'handleDownload',
@@ -73069,6 +73056,36 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
   return Community;
 }(_react2.default.Component)) || _class);
 exports.default = Community;
+
+/***/ }),
+/* 664 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Database = {
+  'Cinderella Girls Theater 811': {
+    name: 'Cinderella Girls Theater 811',
+    lang: 'Japanese', // original language
+    link: {
+      'Japanese': '/public/img/example_manga.jpg',
+      'English': '/public/img/example_manga_english.png'
+    },
+    img: true, // is it an image, if it is, img details
+    imgHeight: '2103px',
+    imgWidth: '480px',
+    overlayLocations: [[83, 1.5, 13, 10], [7, 15, 13, 8], [86, 26.5, 13, 13], [1, 26.5, 16, 10], [78, 46, 16, 10], [21, 47, 16, 10], [85, 64.2, 14, 12], [1, 64.2, 20, 12], [85, 83.05, 14, 16], [1, 83.05, 19, 12]],
+    translatedLines: {
+      English: ["This is truly a refined place, isn't it?", 'Producer', 'Both the atmos-phere and the food here are top class.', 'I might have drunk too much because of that...', 'But for tonight at the very least...', 'Let us enjoy this time to the fullest', 'Oh? Am I not going to say any puns today, you ask?', 'I am not so uncivilised that I would ruin such an evening with one', 'So for this Christmas with just the two of us, let us enjoy...', 'This Holy Night, with all our migh-']
+    }
+  }
+};
+
+exports.default = Database;
 
 /***/ })
 /******/ ]);

@@ -14,6 +14,8 @@ import {
     Button,
 } from 'react-bootstrap';
 
+import Database from './Database.js';
+
 const Language = {
   Original : 'Original',
   Japanese: 'Japanese',
@@ -37,9 +39,8 @@ export default class Community extends React.Component {
   
   componentWillMount() {
     const id = this.props.params.id;
-    const publicLib = this.props.publicLib.docList;
-    if (id!==undefined&&publicLib[id]!==undefined) {
-      let newState = _.cloneDeep(publicLib[id]);
+    if (id!==undefined&&Database[id]!==undefined) {
+      let newState = _.cloneDeep(Database[id]);
       newState.translation = this.state.translation;
       newState.original = newState.lang;
       newState.image = newState.link[newState.original];
@@ -48,7 +49,7 @@ export default class Community extends React.Component {
   }
   
   // Adds a clickable button to the map that jumps to a project with 'id'
-  addNode(text = 'Nothing', left = 0.0, top = 0.0, width = 0.0, height = 0.0, fontSize = 14.0) {
+  addNode(text = 'Nothing', key='0', left = 0.0, top = 0.0, width = 0.0, height = 0.0, fontSize = 14.0) {
     const fixedLineHeight = this.state.imgHeight / 100;
     fontSize = fontSize.toString() + 'px';
     const divStyle = {
@@ -60,11 +61,36 @@ export default class Community extends React.Component {
     //divStyle.fontSize = '2vw';
     
     return (
-      <div className="community-panels" style={divStyle}>
+      <div key={key} className="community-panels" style={divStyle}>
         <div className="community-text" style={{fontSize}}>
           {text}
         </div>
       </div>
+    );
+  }
+  
+  displayTranslation() {
+    const language = this.state.translation;
+    const lines = this.state.translatedLines;
+    const locations = this.state.overlayLocations;
+    if (language!==Language.Original&&
+        lines!==undefined&&
+        lines[language]!==undefined&&
+        locations!==undefined) {
+      return lines[language].map(function(line, index) {
+        return this.addNode(
+          line,
+          index,
+          locations[index][0],
+          locations[index][1],
+          locations[index][2],
+          locations[index][3],
+          locations[index][4]
+        );
+      }.bind(this));
+    }
+    return (
+      <div />
     );
   }
   
@@ -96,31 +122,7 @@ export default class Community extends React.Component {
       </DropdownButton>
     );
   }
-  
-  displayTranslation() {
-    const language = this.state.translation;
-    const lines = this.state.translatedLines;
-    const locations = this.state.overlayLocations;
-    if (language!==Language.Original&&
-        lines!==undefined&&
-        lines[language]!==undefined&&
-        locations!==undefined) {
-      return lines[language].map(function(line, index) {
-        return this.addNode(
-          line,
-          locations[index][0],
-          locations[index][1],
-          locations[index][2],
-          locations[index][3],
-          locations[index][4]
-        );
-      }.bind(this));
-    }
-    return (
-      <div />
-    );
-  }
-            
+
   handleDownload() {
     if (this.state.translation==="Original") {
       return (
