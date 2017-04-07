@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5566ca5325fc89773fc2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7079f67b6f8c20eedbe2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39797,7 +39797,7 @@ function warning(message) {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -39835,30 +39835,32 @@ var _reducers2 = _interopRequireDefault(_reducers);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var store = (0, _redux.createStore)((0, _redux.combineReducers)(_extends({}, _reducers2.default, {
-	routing: _reactRouterRedux.routerReducer
+  routing: _reactRouterRedux.routerReducer
 })), (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
 
 var routes = _react2.default.createElement(
-	_reactRedux.Provider,
-	{ store: store },
-	_react2.default.createElement(
-		_reactRouter.Router,
-		{ history: history, onUpdate: function onUpdate() {
-				return window.scrollTo(0, 0);
-			} },
-		_react2.default.createElement(
-			_reactRouter.Route,
-			{ path: '/', component: _App2.default },
-			_react2.default.createElement(_reactRouter.IndexRoute, { component: _component.MainPage }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'main', component: _component.MainPage }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'document_translate', component: _component.DocumentTranslatePage }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'community', component: _component.Community }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'my_library', component: _component.MyLibraryPage }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'public_library', component: _component.PublicLibraryPage })
-		)
-	)
+  _reactRedux.Provider,
+  { store: store },
+  _react2.default.createElement(
+    _reactRouter.Router,
+    { history: history, onUpdate: function onUpdate() {
+        return window.scrollTo(0, 0);
+      } },
+    _react2.default.createElement(
+      _reactRouter.Route,
+      { path: '/', component: _App2.default },
+      _react2.default.createElement(_reactRouter.IndexRoute, { component: _component.MainPage }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'main', component: _component.MainPage }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'document_translate', component: _component.DocumentTranslatePage }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'public_library', component: _component.LibraryPage }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'my_library', component: _component.MyLibraryPage }),
+      '//',
+      _react2.default.createElement(_reactRouter.Route, { path: 'public_library', component: _component.PublicLibraryPage }),
+      _react2.default.createElement(_reactRouter.Route, { path: 'library(/:id)', component: _component.Community })
+    )
+  )
 );
 
 exports.default = routes;
@@ -40166,7 +40168,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var initialState = {
   documentList: [
   //{ name: 'Document_1', lang: 'Japannese', link: '/public/file/Document_1_Japanese.png' },
-  { name: 'Document_2', lang: 'English', link: '/public/file/Document_2_English.png' }, { name: 'Document_3', lang: 'German', link: '/public/file/Document_3_German.png' }]
+  { name: 'Document_2', lang: 'English', link: { 'English': '/public/file/Document_2_English.png' } }, { name: 'Document_3', lang: 'German', link: { 'German': '/public/file/Document_3_German.png' } }]
 };
 
 function personalLib() {
@@ -40211,7 +40213,28 @@ var _lodash2 = _interopRequireDefault(_lodash);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-  documentList: [{ name: 'Document_1', lang: 'Japannese', link: '/public/file/Document_1_Japanese.png' }]
+  documentList: [{ name: 'Cinderella Girls Theater 811', lang: 'Japanese',
+    link: {
+      'Japanese': '/public/img/example_manga.jpg',
+      'English': '/public/img/example_manga_english.png'
+    } }],
+  docList: {
+    'Cinderella Girls Theater 811': {
+      name: 'Cinderella Girls Theater 811',
+      lang: 'Japanese', // original language
+      link: {
+        'Japanese': '/public/img/example_manga.jpg',
+        'English': '/public/img/example_manga_english.png'
+      },
+      img: true, // is it an image, if it is, img details
+      imgHeight: '2103px',
+      imgWidth: '480px',
+      overlayLocations: [[83, 1.5, 13, 10], [7, 15, 13, 8], [86, 26.5, 13, 13], [1, 26.5, 16, 10], [78, 46, 16, 10], [21, 47, 16, 10], [85, 64.2, 14, 12], [1, 64.2, 20, 12], [85, 83.05, 14, 16], [1, 83.05, 19, 12]],
+      translatedLines: {
+        English: ["This is truly a refined place, isn't it?", 'Producer', 'Both the atmos-phere and the food here are top class.', 'I might have drunk too much because of that...', 'But for tonight at the very least...', 'Let us enjoy this time to the fullest', 'Oh? Am I not going to say any puns today, you ask?', 'I am not so uncivilised that I would ruin such an evening with one', 'So for this Christmas with just the two of us, let us enjoy...', 'This Holy Night, with all our migh-']
+      }
+    }
+  }
 };
 
 function publicLib() {
@@ -40403,9 +40426,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Language = {
-  Original: 0,
-  English: 1,
-  Spanish: 2
+  Original: 'Original',
+  Japanese: 'Japanese',
+  English: 'English',
+  Korean: 'Korean',
+  Vietnamese: 'Vietnamese',
+  Chinese: 'Chinese'
 };
 
 var Community = (_dec = (0, _reactRedux.connect)(function (state) {
@@ -40419,26 +40445,30 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     var _this = _possibleConstructorReturn(this, (Community.__proto__ || Object.getPrototypeOf(Community)).call(this, props));
 
     _this.state = {
-      translation: 'English'
-    };
-
-    // Example hardcoded image
-    _this.image = '/public/img/example_manga.jpg';
-    _this.width = '480px';
-    _this.height = '2103px';
-    _this.locations = [[83, 1.5, 13, 10], [7, 15, 13, 8], [86, 26.5, 13, 13], [1, 26.5, 16, 10], [78, 46, 16, 10], [21, 47, 16, 10], [85, 64.2, 14, 12], [1, 64.2, 20, 12], [85, 83.05, 14, 16], [1, 83.05, 19, 12]];
-
-    _this.translatedLines = {
-      English: ['This is truly a refined place, isn\'t it?', 'Producer', 'Both the atmos-phere and the food here are top class.', 'I might have drunk too much because of that...', 'But for tonight at the very least...', 'Let us enjoy this time to the fullest', 'Oh? Am I not going to say any puns today, you ask?', 'I am not so uncivilised that I would ruin such an evening with one', 'So for this Christmas with just the two of us, let us enjoy...', 'This Holy Night, with all our migh-'],
-      Spanish: []
+      translation: 'English', // default language is english
+      original: '',
+      image: ''
     };
     return _this;
   }
 
-  // Adds a clickable button to the map that jumps to a project with 'id'
-
-
   _createClass(Community, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var id = this.props.params.id;
+      var publicLib = this.props.publicLib.docList;
+      if (id !== undefined && publicLib[id] !== undefined) {
+        var newState = _.cloneDeep(publicLib[id]);
+        newState.translation = this.state.translation;
+        newState.original = newState.lang;
+        newState.image = newState.link[newState.original];
+        this.setState(newState);
+      }
+    }
+
+    // Adds a clickable button to the map that jumps to a project with 'id'
+
+  }, {
     key: 'addNode',
     value: function addNode() {
       var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Nothing';
@@ -40448,7 +40478,7 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
       var height = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0.0;
       var fontSize = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 14.0;
 
-      var fixedLineHeight = this.height / 100;
+      var fixedLineHeight = this.state.imgHeight / 100;
       fontSize = fontSize.toString() + 'px';
       var divStyle = {
         left: left.toString() + '%',
@@ -40472,7 +40502,8 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     key: 'changeLanguageButton',
     value: function changeLanguageButton() {
       var handleChange = function (option, event) {
-        if (option !== 'Original' && (this.translatedLines[option] === null || this.translatedLines[option] === undefined || this.translatedLines[option].length === 0)) {
+        var lines = this.state.translatedLines[option];
+        if (option !== 'Original' && (lines === null || lines === undefined || lines.length === 0)) {
           alert("This langauge is not supported yet!");
         } else {
           this.setState({ translation: option });
@@ -40481,11 +40512,13 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
 
       var listOfOptions = [];
       for (var option in Language) {
-        listOfOptions.push(_react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          { key: option, eventKey: option },
-          option
-        ));
+        if (option !== this.state.original) {
+          listOfOptions.push(_react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { key: option, eventKey: option },
+            option
+          ));
+        }
       }
 
       return _react2.default.createElement(
@@ -40498,12 +40531,47 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     key: 'displayTranslation',
     value: function displayTranslation() {
       var language = this.state.translation;
-      if (language === 'Original') {
-        return _react2.default.createElement('div', null);
+      var lines = this.state.translatedLines;
+      var locations = this.state.overlayLocations;
+      if (language !== Language.Original && lines !== undefined && lines[language] !== undefined && locations !== undefined) {
+        return lines[language].map(function (line, index) {
+          return this.addNode(line, locations[index][0], locations[index][1], locations[index][2], locations[index][3], locations[index][4]);
+        }.bind(this));
+      }
+      return _react2.default.createElement('div', null);
+    }
+  }, {
+    key: 'handleDownload',
+    value: function handleDownload() {
+      if (this.state.translation === "Original") {
+        console.log(this.state.link[this.state.original]);
+        return _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'primary', href: this.state.link[this.state.original], download: true },
+          _react2.default.createElement(
+            'b',
+            null,
+            'Download'
+          )
+        );
       } else {
-        return this.translatedLines[language].map(function (line, index) {
-          return this.addNode(line, this.locations[index][0], this.locations[index][1], this.locations[index][2], this.locations[index][3], this.locations[index][4]);
-        }.bind(this));;
+        return _react2.default.createElement(
+          _reactBootstrap.DropdownButton,
+          { id: 'dropdown', title: 'Download', className: 'btn btn-primary' },
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { key: '0', eventKey: '0', onClick: function onClick() {
+                alert("This feature is not supported yet!");
+              } },
+            this.state.translation,
+            ' overlay only'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { key: '1', eventKey: '1', href: this.state.link[this.state.translation], download: true },
+            'Full translated image'
+          )
+        );
       }
     }
   }, {
@@ -40511,63 +40579,58 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { id: 'community-container', style: { minWidth: this.width } },
-        _react2.default.createElement(
+        { id: 'community-container', style: { minWidth: this.state.imgWidth } },
+        this.state.image === null || this.state.image === undefined || this.state.image === '' ? _react2.default.createElement(
           'div',
           { className: 'community-notice' },
-          _react2.default.createElement(
-            'b',
-            null,
-            'This is an example of a single shared community image and is not indicative of what the Community page actually looks like'
-          )
-        ),
-        _react2.default.createElement(
+          'No image is available'
+        ) : _react2.default.createElement(
           'div',
-          { style: { textAlign: 'center' } },
-          'Choose your Language: ',
-          this.changeLanguageButton(),
-          this.state.translation !== "Original" ? _react2.default.createElement(
-            _reactBootstrap.DropdownButton,
-            { id: 'dropdown', title: 'Download', className: 'btn btn-primary' },
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'community-notice' },
             _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { key: '0', eventKey: '0' },
-              this.state.translation,
-              ' overlay only'
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.MenuItem,
-              { key: '1', eventKey: '1' },
-              'Full translated image'
+              'b',
+              null,
+              'This is an example of a single shared community image and is not indicative of what the Community page actually looks like'
             )
-          ) : _react2.default.createElement('div', null)
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'community-notice' },
-          'This comic is read from right to left.'
-        ),
-        _react2.default.createElement(
-          'div',
-          { id: 'community-image', style: { backgroundImage: 'url(' + this.image + ')', height: this.height, maxWidth: this.width, minWidth: this.width } },
-          this.displayTranslation()
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: { textAlign: 'center' } },
-          _react2.default.createElement(
-            'button',
-            { onClick: function onClick() {
-                alert('There are no other manga yet!');
-              } },
-            'Previous'
           ),
           _react2.default.createElement(
-            'button',
-            { onClick: function onClick() {
-                alert('There are no other manga yet!');
-              }, style: { position: 'flex', marginLeft: 'auto' } },
-            'Next'
+            'div',
+            { style: { textAlign: 'center' } },
+            'Choose your Language: ',
+            this.changeLanguageButton(),
+            ' ',
+            this.handleDownload()
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'community-notice' },
+            'This comic is read from right to left.'
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'community-image', style: { backgroundImage: 'url(' + this.state.image + ')', height: this.state.imgHeight, maxWidth: this.state.imgWidth, minWidth: this.state.imgWidth } },
+            this.displayTranslation()
+          ),
+          _react2.default.createElement(
+            'div',
+            { style: { textAlign: 'center' } },
+            _react2.default.createElement(
+              'button',
+              { onClick: function onClick() {
+                  alert('There are no other manga yet!');
+                } },
+              'Previous'
+            ),
+            _react2.default.createElement(
+              'button',
+              { onClick: function onClick() {
+                  alert('There are no other manga yet!');
+                }, style: { position: 'flex', marginLeft: 'auto' } },
+              'Next'
+            )
           )
         )
       );
@@ -40872,6 +40935,19 @@ var DocumentTranslatePage = (_dec = (0, _reactRedux.connect)(function (state) {
 							_react2.default.createElement(
 								_reactBootstrap.Row,
 								null,
+								_react2.default.createElement(
+									'div',
+									{ className: 'community-notice' },
+									_react2.default.createElement(
+										'b',
+										null,
+										'This is a page made for prototyping purposes. Uploading files aside from the provided assets may result in unexpected results.'
+									)
+								)
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Row,
+								null,
 								this.renderInstruction.call(this)
 							),
 							_react2.default.createElement(
@@ -41017,8 +41093,8 @@ var MainPage = (_dec = (0, _reactRedux.connect)(function (state) {
 										null,
 										_react2.default.createElement(
 											'h3',
-											null,
-											'Some description'
+											{ style: { textShadow: '2px 2px black' } },
+											'Welcome to Instalator!'
 										),
 										this.renderGetStartBtn.call(this)
 									)
@@ -41032,8 +41108,8 @@ var MainPage = (_dec = (0, _reactRedux.connect)(function (state) {
 										null,
 										_react2.default.createElement(
 											'h3',
-											null,
-											'Some description'
+											{ style: { textShadow: '2px 2px black' } },
+											'Welcome to Instalator!'
 										),
 										this.renderGetStartBtn.call(this)
 									)
@@ -41047,8 +41123,8 @@ var MainPage = (_dec = (0, _reactRedux.connect)(function (state) {
 										null,
 										_react2.default.createElement(
 											'h3',
-											null,
-											'Some description'
+											{ style: { textShadow: '2px 2px black' } },
+											'Welcome to Instalator!'
 										),
 										this.renderGetStartBtn.call(this)
 									)
@@ -41181,17 +41257,58 @@ var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
 			);
 		}
 	}, {
+		key: 'renderDownloadButton',
+		value: function renderDownloadButton(record) {
+			var length = Object.keys(record.link).length;
+			if (length === 0) {
+				return _react2.default.createElement(
+					'div',
+					null,
+					'Not Available'
+				);
+			} else if (length === 1) {
+				return _react2.default.createElement(
+					_reactBootstrap.Button,
+					{ bsStyle: 'primary', href: record.link[record.lang], download: true },
+					_react2.default.createElement(
+						'b',
+						null,
+						'Download'
+					)
+				);
+			} else {
+				var list = [];
+				for (var language in record.link) {
+					list.push(_react2.default.createElement(
+						_reactBootstrap.MenuItem,
+						{ key: language, eventKey: language, href: record.link[language], download: true },
+						language
+					));
+				}
+				return _react2.default.createElement(
+					_reactBootstrap.DropdownButton,
+					{ id: 'dropdown', title: 'Download', className: 'btn btn-primary' },
+					list
+				);
+			}
+		}
+	}, {
 		key: 'renderTableRow',
 		value: function renderTableRow(record, idx) {
 			var _this3 = this;
 
+			var libraryLink = "/library/" + record.name;
 			return _react2.default.createElement(
 				'tr',
 				{ key: 'my-library-row-' + idx },
 				_react2.default.createElement(
 					'td',
 					null,
-					record.name
+					_react2.default.createElement(
+						'a',
+						{ href: libraryLink },
+						record.name
+					)
 				),
 				_react2.default.createElement(
 					'td',
@@ -41201,18 +41318,7 @@ var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
 				_react2.default.createElement(
 					'td',
 					null,
-					_react2.default.createElement('a', { id: 'download-link-' + record.link, href: '' + record.link, download: true }),
-					_react2.default.createElement(
-						_reactBootstrap.Button,
-						{
-							bsSize: 'sm',
-							bsStyle: 'info',
-							onClick: function onClick() {
-								return document.getElementById('download-link-' + record.link).click();
-							}
-						},
-						'Download'
-					),
+					this.renderDownloadButton(record),
 					'\u2003',
 					_react2.default.createElement(
 						_reactBootstrap.Button,
@@ -41500,11 +41606,7 @@ var Header = function (_React$Component) {
                _react2.default.createElement(
                   _reactBootstrap.Navbar.Brand,
                   null,
-                  _react2.default.createElement(
-                     'span',
-                     null,
-                     'Instalator'
-                  )
+                  'Instalator'
                )
             ),
             _react2.default.createElement(
@@ -41533,23 +41635,9 @@ var Header = function (_React$Component) {
                   { to: { pathname: '/public_library' } },
                   _react2.default.createElement(
                      _reactBootstrap.NavItem,
-                     { eventKey: 2 },
+                     { eventKey: 3 },
                      'Public Library'
                   )
-               ),
-               _react2.default.createElement(
-                  _reactRouterBootstrap.LinkContainer,
-                  { to: { pathname: '/community' } },
-                  _react2.default.createElement(
-                     _reactBootstrap.NavItem,
-                     { eventKey: 3 },
-                     'Community'
-                  )
-               ),
-               _react2.default.createElement(
-                  _reactBootstrap.NavItem,
-                  { eventKey: 4, href: '#' },
-                  'Profile'
                )
             )
          );
@@ -41689,6 +41777,10 @@ var _PublicLibraryPage = __webpack_require__(306);
 
 var _PublicLibraryPage2 = _interopRequireDefault(_PublicLibraryPage);
 
+var _LibraryPage = __webpack_require__(662);
+
+var _LibraryPage2 = _interopRequireDefault(_LibraryPage);
+
 var _Community = __webpack_require__(302);
 
 var _Community2 = _interopRequireDefault(_Community);
@@ -41700,7 +41792,8 @@ module.exports = {
 	DocumentTranslatePage: _DocumentTranslatePage2.default,
 	Community: _Community2.default,
 	MyLibraryPage: _MyLibraryPage2.default,
-	PublicLibraryPage: _PublicLibraryPage2.default
+	PublicLibraryPage: _PublicLibraryPage2.default,
+	LibraryPage: _LibraryPage2.default
 };
 
 /***/ }),
@@ -72644,6 +72737,230 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 662 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _class;
+
+var _reactDom = __webpack_require__(19);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(40);
+
+var _reactBootstrap = __webpack_require__(25);
+
+var _actions = __webpack_require__(82);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _webUtil = __webpack_require__(83);
+
+var _notificationUtil = __webpack_require__(105);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
+	return state;
+}), _dec(_class = function (_React$Component) {
+	_inherits(LibraryPage, _React$Component);
+
+	function LibraryPage() {
+		_classCallCheck(this, LibraryPage);
+
+		return _possibleConstructorReturn(this, (LibraryPage.__proto__ || Object.getPrototypeOf(LibraryPage)).apply(this, arguments));
+	}
+
+	_createClass(LibraryPage, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			$(_reactDom2.default.findDOMNode(this.publicDocumentList)).dataTable({
+				// responsive: true,
+				// stateSave: true,
+				// paging: true,
+				// searching: true,
+				// order: [ 0, 'asc' ],
+				// columnDefs: [
+				//  	// {searchable: false, targets: 0},
+				//  	// {visible: false, targets: 0},
+				//  	// {orderable: false, targets: 1},
+				//  	// {searchable: false, targets: 1},
+				// ],
+			});
+		}
+	}, {
+		key: 'handleSaveLibrary',
+		value: function handleSaveLibrary(document) {
+			this.props.dispatch(_actions2.default.addDocumentPersonal(document));
+			(0, _webUtil.redirect)('/my_library');
+			(0, _notificationUtil.publishNoti)('info', 'Successfully added document to your personal library!');
+		}
+	}, {
+		key: 'renderTableHeader',
+		value: function renderTableHeader() {
+			return _react2.default.createElement(
+				'thead',
+				null,
+				_react2.default.createElement(
+					'tr',
+					null,
+					_react2.default.createElement(
+						'th',
+						null,
+						'Name'
+					),
+					_react2.default.createElement(
+						'th',
+						null,
+						'Original Language'
+					),
+					_react2.default.createElement('th', null)
+				)
+			);
+		}
+	}, {
+		key: 'renderTableBody',
+		value: function renderTableBody(list) {
+			var _this2 = this;
+
+			return _react2.default.createElement(
+				'tbody',
+				null,
+				list.map(function (record, idx) {
+					return _this2.renderTableRow(record, idx);
+				})
+			);
+		}
+	}, {
+		key: 'renderDownloadButton',
+		value: function renderDownloadButton(record) {
+			var length = Object.keys(record.link).length;
+			if (length === 0) {
+				return _react2.default.createElement(
+					'div',
+					null,
+					'Not Available'
+				);
+			} else if (length === 1) {
+				return _react2.default.createElement(
+					_reactBootstrap.Button,
+					{ bsStyle: 'primary', href: record.link[record.lang], download: true },
+					_react2.default.createElement(
+						'b',
+						null,
+						'Download'
+					)
+				);
+			} else {
+				var list = [];
+				for (var language in record.link) {
+					list.push(_react2.default.createElement(
+						_reactBootstrap.MenuItem,
+						{ key: language, eventKey: language, href: record.link[language], download: true },
+						language
+					));
+				}
+				return _react2.default.createElement(
+					_reactBootstrap.DropdownButton,
+					{ id: 'dropdown', title: 'Download', className: 'btn btn-primary' },
+					list
+				);
+			}
+		}
+	}, {
+		key: 'renderTableRow',
+		value: function renderTableRow(record, idx) {
+			var _this3 = this;
+
+			var libraryLink = 'library/' + record.name;
+			var key = 'my-library-row-' + idx.toString();
+
+			return _react2.default.createElement(
+				'tr',
+				{ key: key },
+				_react2.default.createElement(
+					'td',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: libraryLink },
+						record.name
+					)
+				),
+				_react2.default.createElement(
+					'td',
+					null,
+					record.lang
+				),
+				_react2.default.createElement(
+					'td',
+					null,
+					this.renderDownloadButton(record),
+					'\u2003',
+					_react2.default.createElement(
+						_reactBootstrap.Button,
+						{
+							bsSize: 'sm',
+							bsStyle: 'info',
+							onClick: function onClick() {
+								return _this3.handleSaveLibrary.call(_this3, record);
+							}
+						},
+						'Add to my library'
+					)
+				)
+			);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this4 = this;
+
+			var list = this.props.publicLib.documentList;
+			return _react2.default.createElement(
+				'div',
+				{ id: 'my-library-container' },
+				_react2.default.createElement(
+					_reactBootstrap.Grid,
+					null,
+					_react2.default.createElement(
+						'table',
+						{ ref: function ref(c) {
+								return _this4.publicDocumentList = c;
+							}, className: 'display', cellSpacing: '0', width: '100%' },
+						this.renderTableHeader(),
+						this.renderTableBody(list)
+					)
+				)
+			);
+		}
+	}]);
+
+	return LibraryPage;
+}(_react2.default.Component)) || _class);
+exports.default = LibraryPage;
 
 /***/ })
 /******/ ]);

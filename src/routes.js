@@ -5,9 +5,10 @@ import App from './App';
 import {
 	MainPage,
 	DocumentTranslatePage,
-  	Community,
+  Community,
 	MyLibraryPage,
 	PublicLibraryPage,
+  LibraryPage,
 } from './component';
 
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
@@ -38,18 +39,14 @@ const routes = (
 	<Provider store={store}>
 		<Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
 			<Route path="/" component={App}>
-		    	<IndexRoute component={MainPage} />
-		    	<Route path="main" component={MainPage} />
-		    	<Route path="document_translate" component={DocumentTranslatePage} />
-		    	<Route path="community" component={Community} />
-		    	<Route path="my_library" component={MyLibraryPage} />
-		    	<Route path="public_library" component={PublicLibraryPage} />
-		    	{
-		    	// 	<Route path="/twopanelview" component={TwoPanelView} />
-		    	// <Route path="/threepanelview" component={ThreePanelView} />
-		    	// <Route path="/reduxstoreview" component={ReduxStoreView} />
-		    	}
-		  	</Route>
+        <IndexRoute component={MainPage} />
+        <Route path="main" component={MainPage} />
+        <Route path="document_translate" component={DocumentTranslatePage} />
+        <Route path="public_library" component={LibraryPage} />
+        <Route path="my_library" component={MyLibraryPage} />
+        //<Route path="public_library" component={PublicLibraryPage} />
+        <Route path="library(/:id)" component={Community} />
+      </Route>
 		</Router>
 	</Provider>
 );

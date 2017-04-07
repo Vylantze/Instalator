@@ -37,21 +37,21 @@ export default class MainPage extends React.Component {
 							    <Carousel.Item>
 							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_1.png"/>
 							      	<Carousel.Caption>
-								        <h3>Some description</h3>
+								        <h3 style={{ textShadow: '2px 2px black'}}>Welcome to Instalator!</h3>
 								       	{::this.renderGetStartBtn()}
 							      	</Carousel.Caption>
 							    </Carousel.Item>
 							    <Carousel.Item>
 							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_2.png"/>
 							      	<Carousel.Caption>
-								        <h3>Some description</h3>
+								        <h3 style={{ textShadow: '2px 2px black'}}>Welcome to Instalator!</h3>
 								        {::this.renderGetStartBtn()}
 							      	</Carousel.Caption>
 							    </Carousel.Item>
 							    <Carousel.Item>
 							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_3.png"/>
 							      	<Carousel.Caption>
-								        <h3>Some description</h3>
+								        <h3 style={{ textShadow: '2px 2px black'}}>Welcome to Instalator!</h3>
 								        {::this.renderGetStartBtn()}
 							      	</Carousel.Caption>
 							    </Carousel.Item>

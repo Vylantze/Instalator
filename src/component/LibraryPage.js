@@ -22,9 +22,9 @@ import { redirect } from '../util/webUtil';
 import { publishNoti } from '../util/notificationUtil';
 
 @connect((state) => state)
-export default class MyLibraryPage extends React.Component {
+export default class LibraryPage extends React.Component {
 	componentDidMount() {
-		$(ReactDOM.findDOMNode(this.myDocumentList)).dataTable({
+		$(ReactDOM.findDOMNode(this.publicDocumentList)).dataTable({
 	      	// responsive: true,
 	      	// stateSave: true,
 	      	// paging: true,
@@ -39,10 +39,10 @@ export default class MyLibraryPage extends React.Component {
 	    })
 	}
 
-	handleSharePublic(document) {
-		this.props.dispatch(actions.addDocumentPublic(document));
-		redirect('/public_library');
-		publishNoti('info', 'Successfully added document to public library!');
+	handleSaveLibrary(document) {
+		this.props.dispatch(actions.addDocumentPersonal(document));
+		redirect('/my_library');
+		publishNoti('info', 'Successfully added document to your personal library!');
 	}
 
 	renderTableHeader() {
@@ -50,7 +50,7 @@ export default class MyLibraryPage extends React.Component {
 			<thead>
 	            <tr>
 	                <th>Name</th>
-	                <th>Language</th>
+	                <th>Original Language</th>
 	                <th></th>
 	            </tr>
 	        </thead>
@@ -68,7 +68,6 @@ export default class MyLibraryPage extends React.Component {
 			</tbody>
 		);
 	}
-  
   
   renderDownloadButton(record) {
     const length = Object.keys(record.link).length;
@@ -98,9 +97,11 @@ export default class MyLibraryPage extends React.Component {
   }
 
 	renderTableRow(record, idx) {
-    const libraryLink = "/library/"+ record.name;
+    const libraryLink = 'library/'+ record.name;
+    const key = 'my-library-row-' + idx.toString();
+
 		return (
-			<tr key={`my-library-row-${idx}`}>
+			<tr key={key}>
 				<td>
 					<a href={libraryLink}>{record.name}</a>
 				</td>
@@ -113,9 +114,9 @@ export default class MyLibraryPage extends React.Component {
 					<Button
 						bsSize="sm"
 						bsStyle="info"
-						onClick={() => ::this.handleSharePublic(record)}
+						onClick={() => ::this.handleSaveLibrary(record)}
 					>
-						Share
+						Add to my library
 					</Button>
 				</td>
 			</tr>
@@ -123,11 +124,11 @@ export default class MyLibraryPage extends React.Component {
 	}
 
     render() {
-    	const list = this.props.personalLib.documentList;
+    	const list = this.props.publicLib.documentList;
         return (
             <div id="my-library-container">
 	        	<Grid>
-	        		<table ref={(c) => this.myDocumentList=c} className='display' cellSpacing='0' width='100%'>
+	        		<table ref={(c) => this.publicDocumentList=c} className='display' cellSpacing='0' width='100%'>
 	        			{this.renderTableHeader()}
 	        			{this.renderTableBody(list)}
 	        		</table>

@@ -208,6 +208,11 @@ export default class DocumentTranslatePage extends React.Component {
 				<Collapse in={this.state.activateStep1}>
 					<div>
 						<Grid>
+              <Row>
+                <div className="community-notice">
+                  <b>This is a page made for prototyping purposes. Uploading files aside from the provided assets may result in unexpected results.</b>
+                </div>
+              </Row>
 							<Row>
 								{::this.renderInstruction()}
 							</Row>
