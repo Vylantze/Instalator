@@ -7,7 +7,7 @@
     "webpack": "webpack",
     "node": "babel-node --presets node6 server.babel.js",
     "dev": "concurrently --kill-others \"npm run webpack\" \"npm run node\"",
-    "start": "concurrently --kill-others \"npm run webpack\" \"npm run node\""
+    "start": "node server.babel.js"
   },
   "author": "Huynh Phi Long",
   "license": "ISC",

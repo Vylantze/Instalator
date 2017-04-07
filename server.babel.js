@@ -1,8 +1,8 @@
-import express from 'express';
+var express = require('express');
 
 var app = express();
 
-import registerControllers from './src/controllers';
+var registerControllers = require('./src/controllers');
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/.build', express.static(__dirname + '/.build'));
