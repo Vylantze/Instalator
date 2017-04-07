@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "da8a82b6901a60703a73"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5566ca5325fc89773fc2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -41538,8 +41538,17 @@ var Header = function (_React$Component) {
                   )
                ),
                _react2.default.createElement(
+                  _reactRouterBootstrap.LinkContainer,
+                  { to: { pathname: '/community' } },
+                  _react2.default.createElement(
+                     _reactBootstrap.NavItem,
+                     { eventKey: 3 },
+                     'Community'
+                  )
+               ),
+               _react2.default.createElement(
                   _reactBootstrap.NavItem,
-                  { eventKey: 3, href: '#' },
+                  { eventKey: 4, href: '#' },
                   'Profile'
                )
             )
