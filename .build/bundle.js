@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0b1feec23b4e7ce9939b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2d13ca3058ee0740d07b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40228,8 +40228,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var initialState = {
   documentList: [{ name: 'Cinderella Girls Theater 811', lang: 'Japanese', shareable: true,
     link: {
-      'Japanese': '/public/img/example_manga.jpg',
-      'English': '/public/img/example_manga_english.png'
+      'Japanese': '/public/file/example_manga.jpg',
+      'English': '/public/file/example_manga_english.png'
     } }]
 };
 

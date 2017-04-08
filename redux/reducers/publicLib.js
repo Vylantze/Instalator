@@ -11,8 +11,8 @@ const initialState = {
   documentList: [
     { name: 'Cinderella Girls Theater 811', lang: 'Japanese', shareable:true,
      link: {
-        'Japanese': '/public/img/example_manga.jpg', 
-        'English': '/public/img/example_manga_english.png', 
+        'Japanese': '/public/file/example_manga.jpg', 
+        'English': '/public/file/example_manga_english.png', 
       }, },
     // { name: 'Document_1', lang: 'Japannese', link: '/public/file/Document_1_Japanese.png' },
     // { name: 'Document_2', lang: 'English', link: '/public/file/Document_2_English.png' },
