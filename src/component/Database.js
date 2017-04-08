@@ -3,8 +3,8 @@ const Database = {
     name: 'Cinderella Girls Theater 811', 
     lang: 'Japanese', // original language
     link: {
-      'Japanese': '/public/img/example_manga.jpg', 
-      'English': '/public/img/example_manga_english.png', 
+      'Japanese': '/public/file/example_manga.jpg', 
+      'English': '/public/file/example_manga_english.png', 
     },
     img: true, // is it an image, if it is, img details
     imgHeight: '2103px', 
@@ -40,12 +40,12 @@ const Database = {
     name: 'Cinderella Girls Photoshoot', 
     lang: 'Japanese', // original language
     link: {
-      'Japanese': '/public/img/example_manga.jpg', 
-      'English': '/public/img/example_manga_english.png', 
+      'Japanese': '/public/file/example_manga_2.png', 
+      'English': '/public/file/example_manga_2.png', 
     },
     img: true, // is it an image, if it is, img details
-    imgHeight: '2103px', 
-    imgWidth: '480px', 
+    imgHeight: '1680px', 
+    imgWidth: '560px', 
     overlayLocations: [
       [ 83, 1.5, 13, 10, ],
       [ 7, 15, 13, 8, ],

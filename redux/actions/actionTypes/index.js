@@ -2,13 +2,13 @@ import count from './count';
 
 import spinner from './spinner';
 
-import personalLib from './personalLib';
+import personalLibActionTypes from './personalLibActionTypes';
 
-import publicLib from './publicLib';
+import publicLibActionTypes from './publicLibActionTypes';
 
 module.exports = {
   ...count,
   ...spinner,
-  ...personalLib,
-  ...publicLib,
+  ...personalLibActionTypes,
+  ...publicLibActionTypes,
 };

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "829e58424b011d8d5943"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0b1feec23b4e7ce9939b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -3709,17 +3709,17 @@ var _spinner = __webpack_require__(292);
 
 var _spinner2 = _interopRequireDefault(_spinner);
 
-var _personalLib = __webpack_require__(290);
+var _personalLibActionTypes = __webpack_require__(665);
 
-var _personalLib2 = _interopRequireDefault(_personalLib);
+var _personalLibActionTypes2 = _interopRequireDefault(_personalLibActionTypes);
 
-var _publicLib = __webpack_require__(291);
+var _publicLibActionTypes = __webpack_require__(666);
 
-var _publicLib2 = _interopRequireDefault(_publicLib);
+var _publicLibActionTypes2 = _interopRequireDefault(_publicLibActionTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = _extends({}, _count2.default, _spinner2.default, _personalLib2.default, _publicLib2.default);
+module.exports = _extends({}, _count2.default, _spinner2.default, _personalLibActionTypes2.default, _publicLibActionTypes2.default);
 
 /***/ }),
 /* 34 */
@@ -5815,17 +5815,17 @@ var _spinner = __webpack_require__(296);
 
 var _spinner2 = _interopRequireDefault(_spinner);
 
-var _personalLib = __webpack_require__(294);
+var _personalLibActions = __webpack_require__(667);
 
-var _personalLib2 = _interopRequireDefault(_personalLib);
+var _personalLibActions2 = _interopRequireDefault(_personalLibActions);
 
-var _publicLib = __webpack_require__(295);
+var _publicLibActions = __webpack_require__(668);
 
-var _publicLib2 = _interopRequireDefault(_publicLib);
+var _publicLibActions2 = _interopRequireDefault(_publicLibActions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = _extends({}, _count2.default, _spinner2.default, _personalLib2.default, _publicLib2.default);
+module.exports = _extends({}, _count2.default, _spinner2.default, _personalLibActions2.default, _publicLibActions2.default);
 
 /***/ }),
 /* 65 */
@@ -39990,44 +39990,8 @@ module.exports = {
 };
 
 /***/ }),
-/* 290 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _reduxActions = __webpack_require__(103);
-
-var ADD_DOCUMENT_PERSONAL = 'ADD_DOCUMENT_PERSONAL';
-var REMOVE_DOCUMENT_PERSONAL = 'REMOVE_DOCUMENT_PERSONAL';
-
-module.exports = {
-    ADD_DOCUMENT_PERSONAL: ADD_DOCUMENT_PERSONAL,
-    REMOVE_DOCUMENT_PERSONAL: REMOVE_DOCUMENT_PERSONAL,
-    addDocumentPersonalAction: (0, _reduxActions.createAction)(ADD_DOCUMENT_PERSONAL),
-    removeDocumentPersonalAction: (0, _reduxActions.createAction)(REMOVE_DOCUMENT_PERSONAL)
-};
-
-/***/ }),
-/* 291 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _reduxActions = __webpack_require__(103);
-
-var ADD_DOCUMENT_PUBLIC = 'ADD_DOCUMENT_PUBLIC';
-var REMOVE_DOCUMENT_PUBLIC = 'REMOVE_DOCUMENT_PUBLIC';
-
-module.exports = {
-    ADD_DOCUMENT_PUBLIC: ADD_DOCUMENT_PUBLIC,
-    REMOVE_DOCUMENT_PUBLIC: REMOVE_DOCUMENT_PUBLIC,
-    addDocumentPublicAction: (0, _reduxActions.createAction)(ADD_DOCUMENT_PUBLIC),
-    removeDocumentPublicAction: (0, _reduxActions.createAction)(REMOVE_DOCUMENT_PUBLIC)
-};
-
-/***/ }),
+/* 290 */,
+/* 291 */,
 /* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40073,66 +40037,8 @@ module.exports = {
 };
 
 /***/ }),
-/* 294 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _actionTypes = __webpack_require__(33);
-
-/**
- * If message is provided, It will be shown instead of default Spinner Loading Message.
- * @param message, optional. display custom spinner message.
- */
-function addDocumentPersonal(document) {
-  return function (dispatch) {
-    dispatch((0, _actionTypes.addDocumentPersonalAction)(document));
-  };
-}
-
-function removeDocumentPersonal(href) {
-  return function (dispatch) {
-    dispatch((0, _actionTypes.removeDocumentPersonalAction)(href));
-  };
-}
-
-module.exports = {
-  addDocumentPersonal: addDocumentPersonal,
-  removeDocumentPersonal: removeDocumentPersonal
-};
-
-/***/ }),
-/* 295 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _actionTypes = __webpack_require__(33);
-
-/**
- * If message is provided, It will be shown instead of default Spinner Loading Message.
- * @param message, optional. display custom spinner message.
- */
-function addDocumentPublic(document) {
-  return function (dispatch) {
-    dispatch((0, _actionTypes.addDocumentPublicAction)(document));
-  };
-}
-
-function removeDocumentPublic(href) {
-  return function (dispatch) {
-    dispatch((0, _actionTypes.removeDocumentPublicAction)(href));
-  };
-}
-
-module.exports = {
-  addDocumentPublic: addDocumentPublic,
-  removeDocumentPublic: removeDocumentPublic
-};
-
-/***/ }),
+/* 294 */,
+/* 295 */,
 /* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40250,7 +40156,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var initialState = {
   documentList: [
   //{ name: 'Document_1', lang: 'Japannese', link: '/public/file/Document_1_Japanese.png' },
-  { name: 'Document_2', lang: 'English', link: { 'English': '/public/file/Document_2_English.png' } }, { name: 'Document_3', lang: 'German', link: { 'German': '/public/file/Document_3_German.png' } }]
+  { name: 'Document_2', lang: 'English', link: { 'English': '/public/file/Document_2_English.png' }, shareable: true }, { name: 'Document_3', lang: 'German', link: { 'German': '/public/file/Document_3_German.png' }, shareable: true }]
 };
 
 function personalLib() {
@@ -40272,6 +40178,28 @@ function personalLib() {
         });
         _newState.documentList.splice(location, 1);
         return _newState;
+      }
+    case _actionTypes.SET_SHAREABLE_PERSONAL:
+      {
+        var _newState2 = _lodash2.default.cloneDeep(state);
+        var _location = _newState2.documentList.findIndex(function (element) {
+          return element.name === action.payload.name;
+        });
+        if (_location >= 0) {
+          _newState2.documentList[_location].shareable = true;
+        }
+        return _newState2;
+      }
+    case _actionTypes.SET_UNSHAREABLE_PERSONAL:
+      {
+        var _newState3 = _lodash2.default.cloneDeep(state);
+        var _location2 = _newState3.documentList.findIndex(function (element) {
+          return element.name === action.payload.name;
+        });
+        if (_location2 >= 0) {
+          _newState3.documentList[_location2].shareable = false;
+        }
+        return _newState3;
       }
     default:
       return state;
@@ -40298,7 +40226,7 @@ var _lodash2 = _interopRequireDefault(_lodash);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-  documentList: [{ name: 'Cinderella Girls Theater 811', lang: 'Japanese',
+  documentList: [{ name: 'Cinderella Girls Theater 811', lang: 'Japanese', shareable: true,
     link: {
       'Japanese': '/public/img/example_manga.jpg',
       'English': '/public/img/example_manga_english.png'
@@ -40324,6 +40252,28 @@ function publicLib() {
         });
         _newState.documentList.splice(location, 1);
         return _newState;
+      }
+    case _actionTypes.SET_SHAREABLE_PUBLIC:
+      {
+        var _newState2 = _lodash2.default.cloneDeep(state);
+        var _location = _newState2.documentList.findIndex(function (element) {
+          return element.name === action.payload.name;
+        });
+        if (_location >= 0) {
+          _newState2.documentList[_location].shareable = true;
+        }
+        return _newState2;
+      }
+    case _actionTypes.SET_UNSHAREABLE_PUBLIC:
+      {
+        var _newState3 = _lodash2.default.cloneDeep(state);
+        var _location2 = _newState3.documentList.findIndex(function (element) {
+          return element.name === action.payload.name;
+        });
+        if (_location2 >= 0) {
+          _newState3.documentList[_location2].shareable = false;
+        }
+        return _newState3;
       }
     default:
       return state;
@@ -40726,8 +40676,8 @@ var Database = {
     name: 'Cinderella Girls Theater 811',
     lang: 'Japanese', // original language
     link: {
-      'Japanese': '/public/img/example_manga.jpg',
-      'English': '/public/img/example_manga_english.png'
+      'Japanese': '/public/file/example_manga.jpg',
+      'English': '/public/file/example_manga_english.png'
     },
     img: true, // is it an image, if it is, img details
     imgHeight: '2103px',
@@ -40741,12 +40691,12 @@ var Database = {
     name: 'Cinderella Girls Photoshoot',
     lang: 'Japanese', // original language
     link: {
-      'Japanese': '/public/img/example_manga.jpg',
-      'English': '/public/img/example_manga_english.png'
+      'Japanese': '/public/file/example_manga_2.png',
+      'English': '/public/file/example_manga_2.png'
     },
     img: true, // is it an image, if it is, img details
-    imgHeight: '2103px',
-    imgWidth: '480px',
+    imgHeight: '1680px',
+    imgWidth: '560px',
     overlayLocations: [[83, 1.5, 13, 10], [7, 15, 13, 8], [86, 26.5, 13, 13], [1, 26.5, 16, 10], [78, 46, 16, 10], [21, 47, 16, 10], [85, 64.2, 14, 12], [1, 64.2, 20, 12], [85, 83.05, 14, 16], [1, 83.05, 19, 12]],
     translatedLines: {
       English: ["This is truly a refined place, isn't it?", 'Producer', 'Both the atmos-phere and the food here are top class.', 'I might have drunk too much because of that...', 'But for tonight at the very least...', 'Let us enjoy this time to the fullest', 'Oh? Am I not going to say any puns today, you ask?', 'I am not so uncivilised that I would ruin such an evening with one', 'So for this Christmas with just the two of us, let us enjoy...', 'This Holy Night, with all our migh-']
@@ -41204,10 +41154,14 @@ var LibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
   }, {
     key: 'handleSaveLibrary',
     value: function handleSaveLibrary(document) {
-      this.props.dispatch(_actions2.default.addDocumentPersonal(document));
-      this.props.dispatch(_actions2.default.removeDocumentPublic(document));
-      (0, _webUtil.redirect)('/my_library');
-      (0, _notificationUtil.publishNoti)('info', 'Successfully added document to your personal library!');
+      if (document.shareable) {
+        this.props.dispatch(_actions2.default.setUnshareablePublic(document));this.props.dispatch(_actions2.default.addDocumentPersonal(document));
+        this.props.dispatch(_actions2.default.setUnshareablePersonal(document));
+        (0, _webUtil.redirect)('/my_library');
+        (0, _notificationUtil.publishNoti)('info', 'Successfully added document to your personal library!');
+      } else {
+        (0, _notificationUtil.publishNoti)('info', 'This document has already been added!');
+      }
     }
   }, {
     key: 'renderTableHeader',
@@ -41356,7 +41310,7 @@ var LibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
                 return _this4.publicDocumentList = c;
               }, className: 'display', cellSpacing: '0', width: '100%' },
             this.renderTableHeader(),
-            this.renderTableBody(list)
+            this.renderTableBody(this.props.publicLib.documentList)
           )
         )
       );
@@ -41522,7 +41476,7 @@ exports.default = MainPage;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.default = undefined;
 
@@ -41559,214 +41513,220 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
-	return state;
+  return state;
 }), _dec(_class = function (_React$Component) {
-	_inherits(MyLibraryPage, _React$Component);
+  _inherits(MyLibraryPage, _React$Component);
 
-	function MyLibraryPage() {
-		_classCallCheck(this, MyLibraryPage);
+  function MyLibraryPage() {
+    _classCallCheck(this, MyLibraryPage);
 
-		return _possibleConstructorReturn(this, (MyLibraryPage.__proto__ || Object.getPrototypeOf(MyLibraryPage)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (MyLibraryPage.__proto__ || Object.getPrototypeOf(MyLibraryPage)).apply(this, arguments));
+  }
 
-	_createClass(MyLibraryPage, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			$(_reactDom2.default.findDOMNode(this.myDocumentList)).dataTable({
-				// responsive: true,
-				// stateSave: true,
-				// paging: true,
-				// searching: true,
-				// order: [ 0, 'asc' ],
-				// columnDefs: [
-				//  	// {searchable: false, targets: 0},
-				//  	// {visible: false, targets: 0},
-				//  	// {orderable: false, targets: 1},
-				//  	// {searchable: false, targets: 1},
-				// ],
-			});
-		}
-	}, {
-		key: 'handleSharePublic',
-		value: function handleSharePublic(document) {
-			this.props.dispatch(_actions2.default.addDocumentPublic(document));
-			this.props.dispatch(_actions2.default.removeDocumentPersonal(document));
-			(0, _webUtil.redirect)('/public_library');
-			(0, _notificationUtil.publishNoti)('info', 'Successfully added document to public library!');
-		}
-	}, {
-		key: 'renderDeleteButton',
-		value: function renderDeleteButton(document) {
-			var handleDelete = function () {
-				this.props.dispatch(_actions2.default.removeDocumentPersonal(document));
-				(0, _notificationUtil.publishNoti)('info', 'Successfully deleted!');
-			}.bind(this);
+  _createClass(MyLibraryPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $(_reactDom2.default.findDOMNode(this.myDocumentList)).dataTable({
+        // responsive: true,
+        // stateSave: true,
+        // paging: true,
+        // searching: true,
+        // order: [ 0, 'asc' ],
+        // columnDefs: [
+        //  	// {searchable: false, targets: 0},
+        //  	// {visible: false, targets: 0},
+        //  	// {orderable: false, targets: 1},
+        //  	// {searchable: false, targets: 1},
+        // ],
+      });
+    }
+  }, {
+    key: 'handleSharePublic',
+    value: function handleSharePublic(document) {
+      if (document.shareable) {
+        this.props.dispatch(_actions2.default.addDocumentPublic(document));
+        this.props.dispatch(_actions2.default.setUnshareablePersonal(document));
+        this.props.dispatch(_actions2.default.setUnshareablePublic(document));
+        (0, _webUtil.redirect)('/public_library');
+        (0, _notificationUtil.publishNoti)('info', 'Successfully added document to public library!');
+      } else {
+        (0, _notificationUtil.publishNoti)('info', 'This document has already been shared!');
+      }
+    }
+  }, {
+    key: 'renderDeleteButton',
+    value: function renderDeleteButton(document) {
+      var handleDelete = function () {
+        this.props.dispatch(_actions2.default.removeDocumentPersonal(document));
+        this.props.dispatch(_actions2.default.setShareablePublic(document));
+        (0, _notificationUtil.publishNoti)('info', 'Successfully deleted!');
+      }.bind(this);
 
-			return _react2.default.createElement(
-				_reactBootstrap.Button,
-				{
-					bsSize: 'sm',
-					bsStyle: 'danger',
-					onClick: handleDelete
-				},
-				'Delete'
-			);
-		}
-	}, {
-		key: 'renderTableHeader',
-		value: function renderTableHeader() {
-			return _react2.default.createElement(
-				'thead',
-				null,
-				_react2.default.createElement(
-					'tr',
-					null,
-					_react2.default.createElement(
-						'th',
-						null,
-						'Name'
-					),
-					_react2.default.createElement(
-						'th',
-						null,
-						'Original Language'
-					),
-					_react2.default.createElement('th', null)
-				)
-			);
-		}
-	}, {
-		key: 'renderTableBody',
-		value: function renderTableBody(list) {
-			var _this2 = this;
+      return _react2.default.createElement(
+        _reactBootstrap.Button,
+        {
+          bsSize: 'sm',
+          bsStyle: 'danger',
+          onClick: handleDelete
+        },
+        'Delete'
+      );
+    }
+  }, {
+    key: 'renderTableHeader',
+    value: function renderTableHeader() {
+      return _react2.default.createElement(
+        'thead',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'th',
+            null,
+            'Name'
+          ),
+          _react2.default.createElement(
+            'th',
+            null,
+            'Original Language'
+          ),
+          _react2.default.createElement('th', null)
+        )
+      );
+    }
+  }, {
+    key: 'renderTableBody',
+    value: function renderTableBody(list) {
+      var _this2 = this;
 
-			return _react2.default.createElement(
-				'tbody',
-				null,
-				list.map(function (record, idx) {
-					return _this2.renderTableRow(record, idx);
-				})
-			);
-		}
-	}, {
-		key: 'renderDownloadButton',
-		value: function renderDownloadButton(record) {
-			var length = Object.keys(record.link).length;
-			if (length === 0) {
-				return _react2.default.createElement(
-					'div',
-					null,
-					'Not Available'
-				);
-			} else if (length === 1) {
-				return _react2.default.createElement(
-					_reactBootstrap.Button,
-					{ bsStyle: 'primary', href: record.link[record.lang], download: true },
-					_react2.default.createElement(
-						'b',
-						null,
-						'Download'
-					)
-				);
-			} else {
-				var list = [];
-				for (var language in record.link) {
-					list.push(_react2.default.createElement(
-						_reactBootstrap.MenuItem,
-						{ key: language, eventKey: language, href: record.link[language], download: true },
-						language
-					));
-				}
-				return _react2.default.createElement(
-					_reactBootstrap.DropdownButton,
-					{ id: 'dropdown', title: 'Download', className: 'btn btn-primary' },
-					list
-				);
-			}
-		}
-	}, {
-		key: 'renderTableRow',
-		value: function renderTableRow(record, idx) {
-			var _this3 = this;
+      return _react2.default.createElement(
+        'tbody',
+        null,
+        list.map(function (record, idx) {
+          return _this2.renderTableRow(record, idx);
+        })
+      );
+    }
+  }, {
+    key: 'renderDownloadButton',
+    value: function renderDownloadButton(record) {
+      var length = Object.keys(record.link).length;
+      if (length === 0) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          'Not Available'
+        );
+      } else if (length === 1) {
+        return _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'primary', href: record.link[record.lang], download: true },
+          _react2.default.createElement(
+            'b',
+            null,
+            'Download'
+          )
+        );
+      } else {
+        var list = [];
+        for (var language in record.link) {
+          list.push(_react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            { key: language, eventKey: language, href: record.link[language], download: true },
+            language
+          ));
+        }
+        return _react2.default.createElement(
+          _reactBootstrap.DropdownButton,
+          { id: 'dropdown', title: 'Download', className: 'btn btn-primary' },
+          list
+        );
+      }
+    }
+  }, {
+    key: 'renderTableRow',
+    value: function renderTableRow(record, idx) {
+      var _this3 = this;
 
-			var libraryLink = "/library/" + record.name;
-			var popover = _react2.default.createElement(
-				_reactBootstrap.Tooltip,
-				{ id: 'tooltip' },
-				_react2.default.createElement(
-					'div',
-					{ style: { height: '100%', maxHeight: '200px' } },
-					_react2.default.createElement('img', { style: { maxWidth: '100%', maxHeight: '100%' }, src: record.link[record.lang] })
-				)
-			);
+      var libraryLink = "/library/" + record.name;
+      var popover = _react2.default.createElement(
+        _reactBootstrap.Tooltip,
+        { id: 'tooltip' },
+        _react2.default.createElement(
+          'div',
+          { style: { height: '100%', maxHeight: '200px' } },
+          _react2.default.createElement('img', { style: { maxWidth: '100%', maxHeight: '100%' }, src: record.link[record.lang] })
+        )
+      );
 
-			return _react2.default.createElement(
-				'tr',
-				{ key: 'my-library-row-' + idx },
-				_react2.default.createElement(
-					'td',
-					null,
-					_react2.default.createElement(
-						_reactBootstrap.OverlayTrigger,
-						{ placement: 'right', overlay: popover },
-						_react2.default.createElement(
-							'a',
-							{ href: libraryLink },
-							record.name
-						)
-					)
-				),
-				_react2.default.createElement(
-					'td',
-					null,
-					record.lang
-				),
-				_react2.default.createElement(
-					'td',
-					null,
-					this.renderDownloadButton(record),
-					'\u2003',
-					_react2.default.createElement(
-						_reactBootstrap.Button,
-						{
-							bsSize: 'sm',
-							bsStyle: 'info',
-							onClick: function onClick() {
-								return _this3.handleSharePublic.call(_this3, record);
-							}
-						},
-						'Share'
-					),
-					this.renderDeleteButton.bind(this)(record)
-				)
-			);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this4 = this;
+      return _react2.default.createElement(
+        'tr',
+        { key: 'my-library-row-' + idx },
+        _react2.default.createElement(
+          'td',
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.OverlayTrigger,
+            { placement: 'right', overlay: popover },
+            _react2.default.createElement(
+              'a',
+              { href: libraryLink },
+              record.name
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          record.lang
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          this.renderDownloadButton(record),
+          '\u2003',
+          _react2.default.createElement(
+            _reactBootstrap.Button,
+            {
+              bsSize: 'sm',
+              bsStyle: 'info',
+              onClick: function onClick() {
+                return _this3.handleSharePublic.call(_this3, record);
+              }
+            },
+            'Share'
+          ),
+          this.renderDeleteButton.bind(this)(record)
+        )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
 
-			var list = this.props.personalLib.documentList;
-			return _react2.default.createElement(
-				'div',
-				{ id: 'my-library-container' },
-				_react2.default.createElement(
-					_reactBootstrap.Grid,
-					null,
-					_react2.default.createElement(
-						'table',
-						{ ref: function ref(c) {
-								return _this4.myDocumentList = c;
-							}, className: 'display', cellSpacing: '0', width: '100%' },
-						this.renderTableHeader(),
-						this.renderTableBody(list)
-					)
-				)
-			);
-		}
-	}]);
+      var list = this.props.personalLib.documentList;
+      return _react2.default.createElement(
+        'div',
+        { id: 'my-library-container' },
+        _react2.default.createElement(
+          _reactBootstrap.Grid,
+          null,
+          _react2.default.createElement(
+            'table',
+            { ref: function ref(c) {
+                return _this4.myDocumentList = c;
+              }, className: 'display', cellSpacing: '0', width: '100%' },
+            this.renderTableHeader(),
+            this.renderTableBody(list)
+          )
+        )
+      );
+    }
+  }]);
 
-	return MyLibraryPage;
+  return MyLibraryPage;
 }(_react2.default.Component)) || _class);
 exports.default = MyLibraryPage;
 
@@ -73162,6 +73122,144 @@ function isReactComponent(component) {
   return !!(component && component.prototype && component.prototype.isReactComponent);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 665 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _reduxActions = __webpack_require__(103);
+
+var ADD_DOCUMENT_PERSONAL = 'ADD_DOCUMENT_PERSONAL';
+var REMOVE_DOCUMENT_PERSONAL = 'REMOVE_DOCUMENT_PERSONAL';
+var SET_SHAREABLE_PERSONAL = 'SET_SHAREABLE_PERSONAL';
+var SET_UNSHAREABLE_PERSONAL = 'SET_UNSHAREABLE_PERSONAL';
+
+module.exports = {
+    ADD_DOCUMENT_PERSONAL: ADD_DOCUMENT_PERSONAL,
+    REMOVE_DOCUMENT_PERSONAL: REMOVE_DOCUMENT_PERSONAL,
+    addDocumentPersonalAction: (0, _reduxActions.createAction)(ADD_DOCUMENT_PERSONAL),
+    removeDocumentPersonalAction: (0, _reduxActions.createAction)(REMOVE_DOCUMENT_PERSONAL),
+    SET_SHAREABLE_PERSONAL: SET_SHAREABLE_PERSONAL,
+    setShareablePersonalAction: (0, _reduxActions.createAction)(SET_SHAREABLE_PERSONAL),
+    SET_UNSHAREABLE_PERSONAL: SET_UNSHAREABLE_PERSONAL,
+    setUnshareablePersonalAction: (0, _reduxActions.createAction)(SET_UNSHAREABLE_PERSONAL)
+};
+
+/***/ }),
+/* 666 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _reduxActions = __webpack_require__(103);
+
+var ADD_DOCUMENT_PUBLIC = 'ADD_DOCUMENT_PUBLIC';
+var REMOVE_DOCUMENT_PUBLIC = 'REMOVE_DOCUMENT_PUBLIC';
+var SET_SHAREABLE_PUBLIC = 'SET_SHAREABLE_PUBLIC';
+var SET_UNSHAREABLE_PUBLIC = 'SET_UNSHAREABLE_PUBLIC';
+
+module.exports = {
+    ADD_DOCUMENT_PUBLIC: ADD_DOCUMENT_PUBLIC,
+    REMOVE_DOCUMENT_PUBLIC: REMOVE_DOCUMENT_PUBLIC,
+    addDocumentPublicAction: (0, _reduxActions.createAction)(ADD_DOCUMENT_PUBLIC),
+    removeDocumentPublicAction: (0, _reduxActions.createAction)(REMOVE_DOCUMENT_PUBLIC),
+    SET_SHAREABLE_PUBLIC: SET_SHAREABLE_PUBLIC,
+    setShareablePublicAction: (0, _reduxActions.createAction)(SET_SHAREABLE_PUBLIC),
+    SET_UNSHAREABLE_PUBLIC: SET_UNSHAREABLE_PUBLIC,
+    setUnshareablePublicAction: (0, _reduxActions.createAction)(SET_UNSHAREABLE_PUBLIC)
+};
+
+/***/ }),
+/* 667 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _actionTypes = __webpack_require__(33);
+
+/**
+ * If message is provided, It will be shown instead of default Spinner Loading Message.
+ * @param message, optional. display custom spinner message.
+ */
+function addDocumentPersonal(document) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.addDocumentPersonalAction)(document));
+  };
+}
+
+function removeDocumentPersonal(href) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.removeDocumentPersonalAction)(href));
+  };
+}
+
+function setShareablePersonal(href) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.setShareablePersonalAction)(href));
+  };
+}
+
+function setUnshareablePersonal(href) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.setUnshareablePersonalAction)(href));
+  };
+}
+
+module.exports = {
+  addDocumentPersonal: addDocumentPersonal,
+  removeDocumentPersonal: removeDocumentPersonal,
+  setShareablePersonal: setShareablePersonal,
+  setUnshareablePersonal: setUnshareablePersonal
+};
+
+/***/ }),
+/* 668 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _actionTypes = __webpack_require__(33);
+
+/**
+ * If message is provided, It will be shown instead of default Spinner Loading Message.
+ * @param message, optional. display custom spinner message.
+ */
+function addDocumentPublic(document) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.addDocumentPublicAction)(document));
+  };
+}
+
+function removeDocumentPublic(href) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.removeDocumentPublicAction)(href));
+  };
+}
+
+function setShareablePublic(href) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.setShareablePublicAction)(href));
+  };
+}
+
+function setUnshareablePublic(href) {
+  return function (dispatch) {
+    dispatch((0, _actionTypes.setUnshareablePublicAction)(href));
+  };
+}
+
+module.exports = {
+  addDocumentPublic: addDocumentPublic,
+  removeDocumentPublic: removeDocumentPublic,
+  setShareablePublic: setShareablePublic,
+  setUnshareablePublic: setUnshareablePublic
+};
 
 /***/ })
 /******/ ]);

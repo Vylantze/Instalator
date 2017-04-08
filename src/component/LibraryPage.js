@@ -37,10 +37,14 @@ export default class LibraryPage extends React.Component {
 	}
 
 	handleSaveLibrary(document) {
-		this.props.dispatch(actions.addDocumentPersonal(document));
-    this.props.dispatch(actions.removeDocumentPublic(document));
-		redirect('/my_library');
-		publishNoti('info', 'Successfully added document to your personal library!');
+    if (document.shareable) {
+      this.props.dispatch(actions.setUnshareablePublic(document));      this.props.dispatch(actions.addDocumentPersonal(document));
+      this.props.dispatch(actions.setUnshareablePersonal(document));
+      redirect('/my_library');
+      publishNoti('info', 'Successfully added document to your personal library!');
+    } else {
+      publishNoti('info', 'This document has already been added!');
+    }
 	}
 
 	renderTableHeader() {
@@ -129,7 +133,7 @@ export default class LibraryPage extends React.Component {
         <Grid>
           <table ref={(c) => this.publicDocumentList=c} className='display' cellSpacing='0' width='100%'>
             {this.renderTableHeader()}
-            {this.renderTableBody(list)}
+            {this.renderTableBody(this.props.publicLib.documentList)}
           </table>
         </Grid>
       </div>

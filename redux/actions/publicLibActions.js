@@ -1,6 +1,8 @@
 import {
   addDocumentPublicAction,
   removeDocumentPublicAction,
+  setShareablePublicAction,
+  setUnshareablePublicAction,
 } from './actionTypes';
 
 /**
@@ -19,7 +21,21 @@ function removeDocumentPublic(href) {
   }
 }
 
+function setShareablePublic(href) {
+  return dispatch => {
+    dispatch(setShareablePublicAction(href));
+  }
+}
+
+function setUnshareablePublic(href) {
+  return dispatch => {
+    dispatch(setUnshareablePublicAction(href));
+  }
+}
+
 module.exports = {
   addDocumentPublic,
   removeDocumentPublic,
+  setShareablePublic,
+  setUnshareablePublic,
 };

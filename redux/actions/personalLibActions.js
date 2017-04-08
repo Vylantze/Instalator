@@ -1,6 +1,8 @@
 import {
   addDocumentPersonalAction,
   removeDocumentPersonalAction,
+  setShareablePersonalAction,
+  setUnshareablePersonalAction,
 } from './actionTypes';
 
 /**
@@ -19,7 +21,21 @@ function removeDocumentPersonal(href) {
   }
 }
 
+function setShareablePersonal(href) {
+  return dispatch => {
+    dispatch(setShareablePersonalAction(href));
+  }
+}
+
+function setUnshareablePersonal(href) {
+  return dispatch => {
+    dispatch(setUnshareablePersonalAction(href));
+  }
+}
+
 module.exports = {
   addDocumentPersonal,
   removeDocumentPersonal,
+  setShareablePersonal,
+  setUnshareablePersonal,
 };

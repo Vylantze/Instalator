@@ -1,13 +1,15 @@
 import {
   ADD_DOCUMENT_PUBLIC,
   REMOVE_DOCUMENT_PUBLIC,
+  SET_SHAREABLE_PUBLIC,
+  SET_UNSHAREABLE_PUBLIC,
 } from '../actions/actionTypes';
 
 import _ from 'lodash';
 
 const initialState = {
   documentList: [
-    { name: 'Cinderella Girls Theater 811', lang: 'Japanese', 
+    { name: 'Cinderella Girls Theater 811', lang: 'Japanese', shareable:true,
      link: {
         'Japanese': '/public/img/example_manga.jpg', 
         'English': '/public/img/example_manga_english.png', 
@@ -31,6 +33,26 @@ function publicLib(state = initialState, action) {
         return element.name===action.payload.name;
       });
       newState.documentList.splice(location, 1);
+      return newState;
+    }
+    case SET_SHAREABLE_PUBLIC: {
+      let newState = _.cloneDeep(state);
+      const location = newState.documentList.findIndex(function(element) {
+        return element.name===action.payload.name;
+      });
+      if (location>=0) {
+        newState.documentList[location].shareable = true;
+      }
+      return newState;
+    }
+    case SET_UNSHAREABLE_PUBLIC: {
+      let newState = _.cloneDeep(state);
+      const location = newState.documentList.findIndex(function(element) {
+        return element.name===action.payload.name;
+      });
+      if (location>=0) {
+        newState.documentList[location].shareable = false;
+      }
       return newState;
     }
     default:

@@ -42,15 +42,21 @@ export default class MyLibraryPage extends React.Component {
 	}
 
 	handleSharePublic(document) {
-		this.props.dispatch(actions.addDocumentPublic(document));
-    this.props.dispatch(actions.removeDocumentPersonal(document));
-		redirect('/public_library');
-		publishNoti('info', 'Successfully added document to public library!');
+    if (document.shareable) {
+      this.props.dispatch(actions.addDocumentPublic(document));
+      this.props.dispatch(actions.setUnshareablePersonal(document));
+      this.props.dispatch(actions.setUnshareablePublic(document));
+      redirect('/public_library');
+      publishNoti('info', 'Successfully added document to public library!');
+    } else {
+      publishNoti('info', 'This document has already been shared!');
+    }
 	}
   
   renderDeleteButton(document) {
     const handleDelete = function() {
       this.props.dispatch(actions.removeDocumentPersonal(document));
+      this.props.dispatch(actions.setShareablePublic(document));
       publishNoti('info', 'Successfully deleted!');
     }.bind(this);
 
