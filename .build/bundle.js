@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "77412e827e2f0aeb0758"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "829e58424b011d8d5943"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40267,7 +40267,10 @@ function personalLib() {
     case _actionTypes.REMOVE_DOCUMENT_PERSONAL:
       {
         var _newState = _lodash2.default.cloneDeep(state);
-        _newState.documentList.splice(_newState.documentList.indexOf([action.payload]), 1);
+        var location = _newState.documentList.findIndex(function (element) {
+          return element.name === action.payload.name;
+        });
+        _newState.documentList.splice(location, 1);
         return _newState;
       }
     default:
@@ -40316,7 +40319,10 @@ function publicLib() {
     case _actionTypes.REMOVE_DOCUMENT_PUBLIC:
       {
         var _newState = _lodash2.default.cloneDeep(state);
-        _newState.documentList.splice(_newState.documentList.indexOf([action.payload]), 1);
+        var location = _newState.documentList.findIndex(function (element) {
+          return element.name === action.payload.name;
+        });
+        _newState.documentList.splice(location, 1);
         return _newState;
       }
     default:

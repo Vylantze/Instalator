@@ -27,7 +27,10 @@ function publicLib(state = initialState, action) {
     }
     case REMOVE_DOCUMENT_PUBLIC: {
       let newState = _.cloneDeep(state);
-      newState.documentList.splice(newState.documentList.indexOf([action.payload]), 1);
+      const location = newState.documentList.findIndex(function(element) {
+        return element.name===action.payload.name;
+      });
+      newState.documentList.splice(location, 1);
       return newState;
     }
     default:
