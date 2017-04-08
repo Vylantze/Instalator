@@ -104,15 +104,29 @@ export default class DocumentTranslatePage extends React.Component {
 	}
 
 	handleSaveLibrary() {
-		const documentInfo = {
+		let documentInfo = {
 			name: this.state.documentName,
 			ext: this.state.documentExt,
-			link: `/public/file/${this.state.documentName}_${this.state.toLanguage}.${this.state.documentExt}`,
 			lang: this.state.toLanguage,
+      link: {},
 		};
+    documentInfo.link[this.state.toLanguage] = `/public/file/${this.state.documentName}_${this.state.toLanguage}.${this.state.documentExt}` ;
 		this.props.dispatch(actions.addDocumentPersonal(documentInfo));
 		redirect('/my_library');
 		publishNoti('info', 'Successfully added document to personal collection!');
+	}
+
+  handleShare() {
+		let documentInfo = {
+			name: this.state.documentName,
+			ext: this.state.documentExt,
+			lang: this.state.toLanguage,
+      link: {},
+		};
+    documentInfo.link[this.state.toLanguage] = `/public/file/${this.state.documentName}_${this.state.toLanguage}.${this.state.documentExt}` ;
+		this.props.dispatch(actions.addDocumentPublic(documentInfo));
+		redirect('/public_library');
+		publishNoti('info', 'Successfully shared!');
 	}
 
 	renderInstruction() {
@@ -183,7 +197,7 @@ export default class DocumentTranslatePage extends React.Component {
 											id="add-file-community-button"
 											bsSize="lg"
 											bsStyle="info"
-											onClick={::this.handleSaveLibrary}
+											onClick={::this.handleShare}
 										>
 											Share to community
 										</Button>
@@ -210,7 +224,7 @@ export default class DocumentTranslatePage extends React.Component {
 						<Grid>
               <Row>
                 <div className="community-notice">
-                  <b>This is a page made for prototyping purposes. Uploading files aside from the provided assets may result in unexpected results.</b>
+                  This is a page made for prototyping purposes. Uploading files aside from the provided assets may result in unexpected results.
                 </div>
               </Row>
 							<Row>

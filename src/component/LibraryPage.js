@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import {
     DropdownButton,
     MenuItem,
+    OverlayTrigger,
+    Tooltip,
     Grid,
     Row,
     Col,
@@ -36,6 +38,7 @@ export default class LibraryPage extends React.Component {
 
 	handleSaveLibrary(document) {
 		this.props.dispatch(actions.addDocumentPersonal(document));
+    this.props.dispatch(actions.removeDocumentPublic(document));
 		redirect('/my_library');
 		publishNoti('info', 'Successfully added document to your personal library!');
 	}
@@ -43,12 +46,12 @@ export default class LibraryPage extends React.Component {
 	renderTableHeader() {
 		return (
 			<thead>
-	            <tr>
-	                <th>Name</th>
-	                <th>Original Language</th>
-	                <th></th>
-	            </tr>
-	        </thead>
+        <tr>
+          <th>Name</th>
+          <th>Original Language</th>
+          <th></th>
+        </tr>
+      </thead>
 		);
 	}
 
@@ -93,12 +96,13 @@ export default class LibraryPage extends React.Component {
 
 	renderTableRow(record, idx) {
     const libraryLink = 'library/'+ record.name;
-    const key = 'my-library-row-' + idx.toString();
-
+    const key = 'public-library-row-' + idx.toString();
+    const popover = (<Tooltip id="tooltip"><div style={{height: '100%', maxHeight:'200px'}}><img style={{maxWidth:'100%', maxHeight:'100%',}} src={record.link[record.lang]} /></div></Tooltip>);
+    
 		return (
 			<tr key={key}>
 				<td>
-					<a href={libraryLink}>{record.name}</a>
+          <OverlayTrigger placement="right" overlay={popover}><a href={libraryLink}>{record.name}</a></OverlayTrigger>
 				</td>
 				<td>
 					{record.lang}
@@ -118,17 +122,17 @@ export default class LibraryPage extends React.Component {
 		);
 	}
 
-    render() {
-    	const list = this.props.publicLib.documentList;
-        return (
-            <div id="my-library-container">
-	        	<Grid>
-	        		<table ref={(c) => this.publicDocumentList=c} className='display' cellSpacing='0' width='100%'>
-	        			{this.renderTableHeader()}
-	        			{this.renderTableBody(list)}
-	        		</table>
-        		</Grid>
-	        </div>
-        );
-    }
+  render() {
+    const list = this.props.publicLib.documentList;
+    return (
+        <div id="my-library-container">
+        <Grid>
+          <table ref={(c) => this.publicDocumentList=c} className='display' cellSpacing='0' width='100%'>
+            {this.renderTableHeader()}
+            {this.renderTableBody(list)}
+          </table>
+        </Grid>
+      </div>
+    );
+  }
 }

@@ -8,6 +8,7 @@
 }
 
 .community-notice {
+  font-weight: bold;
   border: 2px red solid;
   text-align: center;
   width: -webkit-fit-content; // Safari/Chrome

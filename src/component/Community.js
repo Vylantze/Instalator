@@ -149,7 +149,7 @@ export default class Community extends React.Component {
           :
           <div>
             <div className="community-notice">
-              <b>This is an example of a single shared community image and is not indicative of what the Community page actually looks like</b>
+              This is an example of a single shared community image and is not indicative of what the Community page actually looks like
             </div>
             <div style={{ textAlign: 'center'}}>
               Choose your Language: {this.changeLanguageButton()} {this.handleDownload()}

@@ -22,7 +22,7 @@ function personalLib(state = initialState, action) {
     }
     case REMOVE_DOCUMENT_PERSONAL: {
       let newState = _.cloneDeep(state);
-      newState.documentList.push(action.payload);
+      newState.documentList.splice(newState.documentList.indexOf([action.payload]), 1);
       return newState;
     }
     default:

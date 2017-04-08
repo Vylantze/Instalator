@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import {
     DropdownButton,
     MenuItem,
+    OverlayTrigger,
+    Tooltip,
     Grid,
     Row,
     Col,
@@ -41,8 +43,24 @@ export default class MyLibraryPage extends React.Component {
 
 	handleSharePublic(document) {
 		this.props.dispatch(actions.addDocumentPublic(document));
+    this.props.dispatch(actions.removeDocumentPersonal(document));
 		redirect('/public_library');
 		publishNoti('info', 'Successfully added document to public library!');
+	}
+  
+  renderDeleteButton(document) {
+    const handleDelete = function() {
+      this.props.dispatch(actions.removeDocumentPersonal(document));
+      publishNoti('info', 'Successfully deleted!');
+    }.bind(this);
+
+    return (
+      <Button
+        bsSize="sm"
+        bsStyle="danger"
+        onClick={handleDelete}
+      >Delete</Button>
+    );
 	}
 
 	renderTableHeader() {
@@ -50,7 +68,7 @@ export default class MyLibraryPage extends React.Component {
 			<thead>
 	            <tr>
 	                <th>Name</th>
-	                <th>Language</th>
+	                <th>Original Language</th>
 	                <th></th>
 	            </tr>
 	        </thead>
@@ -99,10 +117,12 @@ export default class MyLibraryPage extends React.Component {
 
 	renderTableRow(record, idx) {
     const libraryLink = "/library/"+ record.name;
+    const popover = (<Tooltip id="tooltip"><div style={{height: '100%', maxHeight:'200px'}}><img style={{maxWidth:'100%', maxHeight:'100%',}} src={record.link[record.lang]} /></div></Tooltip>);
+
 		return (
 			<tr key={`my-library-row-${idx}`}>
 				<td>
-					<a href={libraryLink}>{record.name}</a>
+          <OverlayTrigger placement="right" overlay={popover}><a href={libraryLink}>{record.name}</a></OverlayTrigger>
 				</td>
 				<td>
 					{record.lang}
@@ -116,7 +136,8 @@ export default class MyLibraryPage extends React.Component {
 						onClick={() => ::this.handleSharePublic(record)}
 					>
 						Share
-					</Button>
+					</Button> 
+          {this.renderDeleteButton.bind(this)(record)}
 				</td>
 			</tr>
 		);
