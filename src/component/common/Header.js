@@ -17,9 +17,9 @@ export default class Header extends React.Component {
    	return (
    		<Navbar>
         <Navbar.Header>
-           <Navbar.Brand>
-              Instalator
-           </Navbar.Brand>
+          <Navbar.Brand>
+            <a href='/'>Instalator</a>
+          </Navbar.Brand>
         </Navbar.Header>
         <Nav>
           <LinkContainer to={{ pathname: '/document_translate'}}>
