@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3d1c006b84abd548719c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d8e6e13e7cd2be7465dc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40606,7 +40606,8 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     _this.state = {
       translation: 'English', // default language is english
       original: '',
-      image: ''
+      image: '',
+      hideFeedbackBox: true
     };
     return _this;
   }
@@ -40736,8 +40737,12 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
     /* Comment box */
 
   }, {
-    key: 'getInputBox',
-    value: function getInputBox() {
+    key: 'getCommentBox',
+    value: function getCommentBox() {
+      var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Comments";
+      var placeholder = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Leave a comment...";
+      var submit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "Comment";
+
       var textInput = null;
       var handleSubmit = function handleSubmit() {
         alert("You said '" + textInput.value + "', but this function is not supported yet!");
@@ -40758,14 +40763,14 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
         _react2.default.createElement(
           'h2',
           null,
-          'Comments'
+          title
         ),
         _react2.default.createElement('textarea', {
           className: 'form-control',
           ref: function ref(input) {
             textInput = input;
           },
-          placeholder: 'Leave a comment...',
+          placeholder: placeholder,
           onKeyDown: catchSubmit,
           style: { resize: 'none' }
         }),
@@ -40776,7 +40781,7 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
             className: 'btn btn-default',
             onClick: handleSubmit
           },
-          'Comment'
+          submit
         )
       );
     }
@@ -40820,24 +40825,36 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
             'div',
             { style: { textAlign: 'center' } },
             _react2.default.createElement(
-              'button',
+              _reactBootstrap.Button,
               { onClick: function onClick() {
                   alert('There are no other manga yet!');
                 } },
               'Previous'
             ),
             _react2.default.createElement(
-              'button',
+              _reactBootstrap.Button,
+              { bsStyle: 'primary', onClick: function () {
+                  this.setState({ hideFeedbackBox: !this.state.hideFeedbackBox });
+                }.bind(this) },
+              'Feedback'
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Button,
               { onClick: function onClick() {
                   alert('There are no other manga yet!');
-                }, style: { position: 'flex', marginLeft: 'auto' } },
+                } },
               'Next'
             )
           ),
+          !this.state.hideFeedbackBox ? _react2.default.createElement(
+            'div',
+            null,
+            this.getCommentBox.bind(this)("Feedback", "Write your feedback here!", "Submit")
+          ) : _react2.default.createElement('div', null),
           _react2.default.createElement(
             'div',
             null,
-            this.getInputBox.bind(this)()
+            this.getCommentBox.bind(this)()
           )
         )
       );

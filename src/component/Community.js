@@ -34,6 +34,7 @@ export default class Community extends React.Component {
       translation: 'English', // default language is english
       original: '',
       image: '',
+      hideFeedbackBox: true,
     };
   }
   
@@ -139,7 +140,7 @@ export default class Community extends React.Component {
   }
   
   /* Comment box */
-  getInputBox() {
+  getCommentBox(title = "Comments", placeholder = "Leave a comment...", submit= "Comment") {
     let textInput = null;
     const handleSubmit = function() {
       alert("You said '" + textInput.value + "', but this function is not supported yet!");
@@ -157,12 +158,12 @@ export default class Community extends React.Component {
     return (
       <div style={{width: '100%', maxWidth: this.state.imgWidth, marginLeft: 'auto', marginRight: 'auto'}}>
         <h2>
-          Comments
+          {title}
         </h2>
         <textarea
           className="form-control"
           ref={(input) => { textInput = input; }}
-          placeholder='Leave a comment...'
+          placeholder={placeholder}
           onKeyDown={catchSubmit}
           style={{ resize: 'none'}}
         />
@@ -171,7 +172,7 @@ export default class Community extends React.Component {
           className="btn btn-default"
           onClick={handleSubmit}
         >
-          Comment
+          {submit}
         </button>
       </div>
     );
@@ -200,11 +201,18 @@ export default class Community extends React.Component {
               {this.displayTranslation()}
             </div>
             <div style={{textAlign: 'center'}}>
-              <button onClick={function(){ alert('There are no other manga yet!'); }}>Previous</button>
-              <button onClick={function(){ alert('There are no other manga yet!'); }} style={{position: 'flex', marginLeft: 'auto'}}>Next</button>
+              <Button onClick={function(){ alert('There are no other manga yet!'); }}>Previous</Button>
+              <Button bsStyle="primary" onClick={function(){ this.setState({hideFeedbackBox: !this.state.hideFeedbackBox}) }.bind(this)}>Feedback</Button>
+              <Button onClick={function(){ alert('There are no other manga yet!'); }}>Next</Button>
             </div>
+            {
+              (!this.state.hideFeedbackBox) ?
+              <div>
+                {this.getCommentBox.bind(this)("Feedback", "Write your feedback here!", "Submit")}
+              </div> : <div />
+            }
             <div>
-              {this.getInputBox.bind(this)()}
+              {this.getCommentBox.bind(this)()}
             </div>
           </div>
         }
