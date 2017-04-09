@@ -54,10 +54,10 @@ export default class DocumentTranslatePage extends React.Component {
 		console.log(name);
 		const ext = fileName.substring(idx+1, fileName.length);
 		this.setState({
-	    	documentName: name,
-	    	documentExt: ext,
-	    });
-	    this.handleValidation();
+      documentName: name,
+      documentExt: ext,
+    });
+    this.handleValidation();
 	}
 
 	handleFileRemove(type, file) {
@@ -110,7 +110,8 @@ export default class DocumentTranslatePage extends React.Component {
 			lang: this.state.toLanguage,
       link: {},
 		};
-    documentInfo.link[this.state.toLanguage] = `/public/file/${this.state.documentName}_${this.state.toLanguage}.${this.state.documentExt}` ;
+    documentInfo.link[this.state.fromLanguage] = '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
+    documentInfo.link[this.state.toLanguage] =  '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
 		this.props.dispatch(actions.addDocumentPersonal(documentInfo));
 		redirect('/my_library');
 		publishNoti('info', 'Successfully added document to personal collection!');
@@ -123,7 +124,8 @@ export default class DocumentTranslatePage extends React.Component {
 			lang: this.state.toLanguage,
       link: {},
 		};
-    documentInfo.link[this.state.toLanguage] = `/public/file/${this.state.documentName}_${this.state.toLanguage}.${this.state.documentExt}` ;
+    documentInfo.link[this.state.fromLanguage] = '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
+    documentInfo.link[this.state.toLanguage] =  '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
 		this.props.dispatch(actions.addDocumentPublic(documentInfo));
 		redirect('/public_library');
 		publishNoti('info', 'Successfully shared!');
@@ -209,7 +211,7 @@ export default class DocumentTranslatePage extends React.Component {
 	   							</Row>
 	   						</Col>
 	   					</Row>
-				      	<a id="download-link" href={`/public/file/${fileName}`} download />
+				      	<a id="download-link" href='/public/file/uploaded.png' download />
 				    </Grid>
 				</Panel>
 			</div>

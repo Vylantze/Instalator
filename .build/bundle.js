@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d8e6e13e7cd2be7465dc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3d177e0d9e19f2e6ca32"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40288,9 +40288,11 @@ var _lodash2 = _interopRequireDefault(_lodash);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-  documentList: [
-  //{ name: 'Document_1', lang: 'Japannese', link: '/public/file/Document_1_Japanese.png' },
-  { name: 'Document_2', lang: 'English', link: { 'English': '/public/file/Document_2_English.png' }, shareable: true }, { name: 'Document_3', lang: 'German', link: { 'German': '/public/file/Document_3_German.png' }, shareable: true }]
+  documentList: [{ name: 'Cinderella Girls Photoshoot', lang: 'Japanese',
+    link: { 'Japanese': '/public/file/example_manga_2.png', 'English': '/public/file/example_manga_2_English.png' }, shareable: true }, { name: '9Gag', lang: 'English',
+    link: { 'English': '/public/file/example_3.jpg',
+      'Japanese': '/public/file/example_3_Japanese.png',
+      'Chinese': '/public/file/example_3_Chinese.png' }, shareable: true }]
 };
 
 function personalLib() {
@@ -40586,11 +40588,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Language = {
   Original: 'Original',
-  Japanese: 'Japanese',
   English: 'English',
+  Japanese: 'Japanese',
+  Chinese: 'Chinese',
   Korean: 'Korean',
-  Vietnamese: 'Vietnamese',
-  Chinese: 'Chinese'
+  Vietnamese: 'Vietnamese'
 };
 
 var Community = (_dec = (0, _reactRedux.connect)(function (state) {
@@ -40811,14 +40813,18 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
             ' ',
             this.handleDownload()
           ),
-          _react2.default.createElement(
+          this.state.original === Language.Japanese ? _react2.default.createElement(
             'div',
             { className: 'community-notice' },
             'This comic is read from right to left.'
-          ),
+          ) : _react2.default.createElement('div', null),
           _react2.default.createElement(
             'div',
             { id: 'community-image', style: { backgroundImage: 'url(' + this.state.image + ')', height: this.state.imgHeight, maxWidth: this.state.imgWidth, minWidth: this.state.imgWidth } },
+            this.state.imgHeight,
+            ', ',
+            this.state.imgWidth,
+            ',',
             this.displayTranslation()
           ),
           _react2.default.createElement(
@@ -40896,14 +40902,31 @@ var Database = {
     lang: 'Japanese', // original language
     link: {
       'Japanese': '/public/file/example_manga_2.png',
-      'English': '/public/file/example_manga_2.png'
+      'English': '/public/file/example_manga_2_English.png'
     },
     img: true, // is it an image, if it is, img details
     imgHeight: '1680px',
     imgWidth: '560px',
-    overlayLocations: [[83, 1.5, 13, 10], [7, 15, 13, 8], [86, 26.5, 13, 13], [1, 26.5, 16, 10], [78, 46, 16, 10], [21, 47, 16, 10], [85, 64.2, 14, 12], [1, 64.2, 20, 12], [85, 83.05, 14, 16], [1, 83.05, 19, 12]],
+    overlayLocations: [[33, 41.5, 33, 6], [1, 41, 17, 7], [1, 50, 17, 11], [75, 61.5, 25, 6.5], [23, 61.3, 23, 5.5], [1.5, 64, 10, 5], [1, 79, 20, 15, 50]],
     translatedLines: {
-      English: ["This is truly a refined place, isn't it?", 'Producer', 'Both the atmos-phere and the food here are top class.', 'I might have drunk too much because of that...', 'But for tonight at the very least...', 'Let us enjoy this time to the fullest', 'Oh? Am I not going to say any puns today, you ask?', 'I am not so uncivilised that I would ruin such an evening with one', 'So for this Christmas with just the two of us, let us enjoy...', 'This Holy Night, with all our migh-']
+      English: ['This word has been censored due to containing a forbidden word', 'No, no', "Isn't this just plain weird!!??", "Even if you say that, it is the decision of the top brass...", "Looks like we have no choice but to change the name, nya", "So cool...", "Stop it nya!"]
+    }
+  },
+  '9Gag': {
+    name: '9Gag',
+    lang: 'English', // original language
+    link: {
+      'English': '/public/file/example_3.jpg',
+      'Japanese': '/public/file/example_3_Japanese.png',
+      'Chinese': '/public/file/example_3_Chinese.png'
+    },
+    img: true, // is it an image, if it is, img details
+    imgHeight: '640px',
+    imgWidth: '640px',
+    overlayLocations: [[3, 4, 15, 11, 30], [82, 4, 15, 11, 30], [7, 63, 90, 35, 40]],
+    translatedLines: {
+      'Japanese': ['六', '九', '君は正しでも、私は間違っていない。君はただ私の人生を見たことがなかった'],
+      'Chinese': ['六', '九', '只是因为你是对的并不意味着我错了。你刚刚没有看从我的生活']
     }
   }
 };
@@ -41062,7 +41085,8 @@ var DocumentTranslatePage = (_dec = (0, _reactRedux.connect)(function (state) {
 				lang: this.state.toLanguage,
 				link: {}
 			};
-			documentInfo.link[this.state.toLanguage] = '/public/file/' + this.state.documentName + '_' + this.state.toLanguage + '.' + this.state.documentExt;
+			documentInfo.link[this.state.fromLanguage] = '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
+			documentInfo.link[this.state.toLanguage] = '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
 			this.props.dispatch(_actions2.default.addDocumentPersonal(documentInfo));
 			(0, _webUtil.redirect)('/my_library');
 			(0, _notificationUtil.publishNoti)('info', 'Successfully added document to personal collection!');
@@ -41076,7 +41100,8 @@ var DocumentTranslatePage = (_dec = (0, _reactRedux.connect)(function (state) {
 				lang: this.state.toLanguage,
 				link: {}
 			};
-			documentInfo.link[this.state.toLanguage] = '/public/file/' + this.state.documentName + '_' + this.state.toLanguage + '.' + this.state.documentExt;
+			documentInfo.link[this.state.fromLanguage] = '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
+			documentInfo.link[this.state.toLanguage] = '/public/file/uploaded.png'; //`/.uploads/${this.state.documentName}.${this.state.documentExt}`;
 			this.props.dispatch(_actions2.default.addDocumentPublic(documentInfo));
 			(0, _webUtil.redirect)('/public_library');
 			(0, _notificationUtil.publishNoti)('info', 'Successfully shared!');
@@ -41196,7 +41221,7 @@ var DocumentTranslatePage = (_dec = (0, _reactRedux.connect)(function (state) {
 								_react2.default.createElement(_reactBootstrap.Row, null)
 							)
 						),
-						_react2.default.createElement('a', { id: 'download-link', href: '/public/file/' + fileName, download: true })
+						_react2.default.createElement('a', { id: 'download-link', href: '/public/file/uploaded.png', download: true })
 					)
 				)
 			);
@@ -42558,7 +42583,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var langOptions = [{ key: 'Japanese', value: 'Japanese' }, { key: 'English', value: 'English' }, { key: 'Korean', value: 'Korean' }, { key: 'Vietnamese', value: 'Vietnamese' }, { key: 'Chinese', value: 'Chinese' }];
+var langOptions = [{ key: 'English', value: 'English' }, { key: 'Japanese', value: 'Japanese' }, { key: 'Chinese', value: 'Chinese' }, { key: 'Korean', value: 'Korean' }, { key: 'Vietnamese', value: 'Vietnamese' }];
 
 var LanguageSelect = function (_React$Component) {
    _inherits(LanguageSelect, _React$Component);

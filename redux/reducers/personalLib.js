@@ -9,9 +9,15 @@ import _ from 'lodash';
 
 const initialState = {
   documentList: [
+    { name: 'Cinderella Girls Photoshoot', lang: 'Japanese', 
+      link: {'Japanese':'/public/file/example_manga_2.png', 'English':'/public/file/example_manga_2_English.png'}, shareable:true, },
+    { name: '9Gag', lang: 'English', 
+      link: {'English':'/public/file/example_3.jpg',
+      'Japanese': '/public/file/example_3_Japanese.png',
+      'Chinese': '/public/file/example_3_Chinese.png',}, shareable:true, },
     //{ name: 'Document_1', lang: 'Japannese', link: '/public/file/Document_1_Japanese.png' },
-    { name: 'Document_2', lang: 'English', link: {'English':'/public/file/Document_2_English.png'}, shareable:true, },
-    { name: 'Document_3', lang: 'German', link: {'German':'/public/file/Document_3_German.png'}, shareable:true, },
+    //{ name: 'Document_2', lang: 'English', link: {'English':'/public/file/Document_2_English.png'}, shareable:true, },
+    //{ name: 'Document_3', lang: 'German', link: {'German':'/public/file/Document_3_German.png'}, shareable:true, },
   ],
 }
 

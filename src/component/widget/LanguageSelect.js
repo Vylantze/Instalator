@@ -15,11 +15,11 @@ import {
 } from './common';
 
 const langOptions = [
-   { key: 'Japanese', value: 'Japanese' },
    { key: 'English', value: 'English' },
+   { key: 'Japanese', value: 'Japanese' },
+   { key: 'Chinese', value: 'Chinese' },
    { key: 'Korean', value: 'Korean' },
    { key: 'Vietnamese', value: 'Vietnamese' },
-   { key: 'Chinese', value: 'Chinese' },
 ]
 
 export default class LanguageSelect extends React.Component {

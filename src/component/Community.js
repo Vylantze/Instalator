@@ -18,11 +18,11 @@ import Database from './Database.js';
 
 const Language = {
   Original : 'Original',
-  Japanese: 'Japanese',
   English : 'English',
+  Japanese: 'Japanese',
+  Chinese: 'Chinese',
   Korean: 'Korean',
   Vietnamese: 'Vietnamese',
-  Chinese: 'Chinese',
 };
 
 @connect((state) => state)
@@ -194,10 +194,15 @@ export default class Community extends React.Component {
             <div style={{ textAlign: 'center'}}>
               Choose your Language: {this.changeLanguageButton()} {this.handleDownload()}
             </div>
-            <div className="community-notice">
-              This comic is read from right to left.
-            </div>
+            {
+              (this.state.original===Language.Japanese) ?
+              <div className="community-notice">
+                This comic is read from right to left.
+              </div> : <div />
+            }
             <div id="community-image" style={{backgroundImage: 'url(' + this.state.image + ')', height: this.state.imgHeight,  maxWidth: this.state.imgWidth, minWidth: this.state.imgWidth, }}>
+              {this.state.imgHeight}, {this.state.imgWidth}, 
+              
               {this.displayTranslation()}
             </div>
             <div style={{textAlign: 'center'}}>
