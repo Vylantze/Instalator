@@ -138,6 +138,45 @@ export default class Community extends React.Component {
     }
   }
   
+  /* Comment box */
+  getInputBox() {
+    let textInput = null;
+    const handleSubmit = function() {
+      alert("You said '" + textInput.value + "', but this function is not supported yet!");
+      textInput.value = '';
+    };
+
+    const catchSubmit = function(e) {
+      if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
+        handleSubmit();
+      }
+      return true;
+    };
+
+    return (
+      <div style={{width: '100%', maxWidth: this.state.imgWidth, marginLeft: 'auto', marginRight: 'auto'}}>
+        <h2>
+          Comments
+        </h2>
+        <textarea
+          className="form-control"
+          ref={(input) => { textInput = input; }}
+          placeholder='Leave a comment...'
+          onKeyDown={catchSubmit}
+          style={{ resize: 'none'}}
+        />
+        <button
+          type="button"
+          className="btn btn-default"
+          onClick={handleSubmit}
+        >
+          Comment
+        </button>
+      </div>
+    );
+  }
+  
   render() {
     return (
       <div id="community-container" style={{ minWidth: this.state.imgWidth }} >
@@ -163,6 +202,9 @@ export default class Community extends React.Component {
             <div style={{textAlign: 'center'}}>
               <button onClick={function(){ alert('There are no other manga yet!'); }}>Previous</button>
               <button onClick={function(){ alert('There are no other manga yet!'); }} style={{position: 'flex', marginLeft: 'auto'}}>Next</button>
+            </div>
+            <div>
+              {this.getInputBox.bind(this)()}
             </div>
           </div>
         }
