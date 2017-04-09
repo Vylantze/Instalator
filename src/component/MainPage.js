@@ -29,43 +29,49 @@ export default class MainPage extends React.Component {
 			<Button bsStyle="primary" onClick={::this.handleRedirect}>Get started</Button>
 		);
 	}
-    render() {
-        return (
-            <div id="main-page-container">
-	        	<Grid fluid>
-	        		<Row>
-	        			<Col xs={12}>
-	        				<Carousel>
-							    <Carousel.Item>
-							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_1.png"/>
-							      	<Carousel.Caption>
-								        <h3 style={{ textShadow: '2px 2px black'}}>Welcome to Instalator!</h3>
-								       	{::this.renderGetStartBtn()}
-							      	</Carousel.Caption>
-							    </Carousel.Item>
-							    <Carousel.Item>
-							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_2.png"/>
-							      	<Carousel.Caption>
-								        <h3 style={{ textShadow: '2px 2px black'}}>Welcome to Instalator!</h3>
-								        {::this.renderGetStartBtn()}
-							      	</Carousel.Caption>
-							    </Carousel.Item>
-							    <Carousel.Item>
-							      	<img width={1200} height={500} alt="900x500" src="/public/img/carousel_3.png"/>
-							      	<Carousel.Caption>
-								        <h3 style={{ textShadow: '2px 2px black'}}>Welcome to Instalator!</h3>
-								        {::this.renderGetStartBtn()}
-							      	</Carousel.Caption>
-							    </Carousel.Item>
-							    
-						  	</Carousel>
-	        			</Col>
-	        		</Row>
-              <Row>
-                <Contact standalone='none' />
-              </Row>
-        		</Grid>
-	        </div>
-        );
-    }
+  render() {
+    const welcome = 'Welcome to Instalator!';
+    const description = 'The one stop to translate your manga and view them instantly!';
+
+    return (
+        <div id="main-page-container">
+        <Grid fluid>
+          <Row>
+            <Col xs={12}>
+              <Carousel>
+              <Carousel.Item>
+                  <img width={1200} height={500} alt="900x500" src="/public/img/carousel_1.png"/>
+                  <Carousel.Caption>
+                    <h3 style={{ textShadow: '2px 2px black'}}>{welcome}</h3>
+                    {description}
+                    {::this.renderGetStartBtn()}
+                  </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                  <img width={1200} height={500} alt="900x500" src="/public/img/carousel_2.png"/>
+                  <Carousel.Caption>
+                    <h3 style={{ textShadow: '2px 2px black'}}>{welcome}</h3>
+                    {description}
+                    {::this.renderGetStartBtn()}
+                  </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                  <img width={1200} height={500} alt="900x500" src="/public/img/carousel_3.png"/>
+                  <Carousel.Caption>
+                    <h3 style={{ textShadow: '2px 2px black'}}>{welcome}</h3>
+                    {description}
+                    {::this.renderGetStartBtn()}
+                  </Carousel.Caption>
+              </Carousel.Item>
+
+            </Carousel>
+            </Col>
+          </Row>
+          <Row>
+            <Contact standalone='none' />
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
 }

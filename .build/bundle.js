@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3d177e0d9e19f2e6ca32"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "010e4ae7023c35e11e80"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -30498,7 +30498,13 @@ var Community = (_dec = (0, _reactRedux.connect)(function (state) {
           { href: 'https://github.com/Vylantze/Instalator/' },
           'Github'
         ),
-        '. If you have any issues or suggestions, feel free to create an issue on our respository!',
+        '. If you have any issues or suggestions, feel free to create an issue on our respository or ',
+        _react2.default.createElement(
+          'a',
+          { href: 'https://github.com/Vylantze/Instalator/' },
+          'email'
+        ),
+        ' us!',
         _react2.default.createElement('br', null),
         _react2.default.createElement('br', null),
         this.standalone ? _react2.default.createElement('img', { src: '/public/img/korwa_thumbs.png' }) : _react2.default.createElement('div', null)
@@ -41558,7 +41564,7 @@ exports.default = LibraryPage;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.default = undefined;
 
@@ -41593,107 +41599,113 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var MainPage = (_dec = (0, _reactRedux.connect)(function (state) {
-	return state;
+  return state;
 }), _dec(_class = function (_React$Component) {
-	_inherits(MainPage, _React$Component);
+  _inherits(MainPage, _React$Component);
 
-	function MainPage() {
-		_classCallCheck(this, MainPage);
+  function MainPage() {
+    _classCallCheck(this, MainPage);
 
-		return _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).apply(this, arguments));
+  }
 
-	_createClass(MainPage, [{
-		key: 'handleRedirect',
-		value: function handleRedirect() {
-			(0, _webUtil.redirect)('/document_translate');
-		}
-	}, {
-		key: 'renderGetStartBtn',
-		value: function renderGetStartBtn() {
-			return _react2.default.createElement(
-				_reactBootstrap.Button,
-				{ bsStyle: 'primary', onClick: this.handleRedirect.bind(this) },
-				'Get started'
-			);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ id: 'main-page-container' },
-				_react2.default.createElement(
-					_reactBootstrap.Grid,
-					{ fluid: true },
-					_react2.default.createElement(
-						_reactBootstrap.Row,
-						null,
-						_react2.default.createElement(
-							_reactBootstrap.Col,
-							{ xs: 12 },
-							_react2.default.createElement(
-								_reactBootstrap.Carousel,
-								null,
-								_react2.default.createElement(
-									_reactBootstrap.Carousel.Item,
-									null,
-									_react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_1.png' }),
-									_react2.default.createElement(
-										_reactBootstrap.Carousel.Caption,
-										null,
-										_react2.default.createElement(
-											'h3',
-											{ style: { textShadow: '2px 2px black' } },
-											'Welcome to Instalator!'
-										),
-										this.renderGetStartBtn.call(this)
-									)
-								),
-								_react2.default.createElement(
-									_reactBootstrap.Carousel.Item,
-									null,
-									_react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_2.png' }),
-									_react2.default.createElement(
-										_reactBootstrap.Carousel.Caption,
-										null,
-										_react2.default.createElement(
-											'h3',
-											{ style: { textShadow: '2px 2px black' } },
-											'Welcome to Instalator!'
-										),
-										this.renderGetStartBtn.call(this)
-									)
-								),
-								_react2.default.createElement(
-									_reactBootstrap.Carousel.Item,
-									null,
-									_react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_3.png' }),
-									_react2.default.createElement(
-										_reactBootstrap.Carousel.Caption,
-										null,
-										_react2.default.createElement(
-											'h3',
-											{ style: { textShadow: '2px 2px black' } },
-											'Welcome to Instalator!'
-										),
-										this.renderGetStartBtn.call(this)
-									)
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Row,
-						null,
-						_react2.default.createElement(_Contact2.default, { standalone: 'none' })
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(MainPage, [{
+    key: 'handleRedirect',
+    value: function handleRedirect() {
+      (0, _webUtil.redirect)('/document_translate');
+    }
+  }, {
+    key: 'renderGetStartBtn',
+    value: function renderGetStartBtn() {
+      return _react2.default.createElement(
+        _reactBootstrap.Button,
+        { bsStyle: 'primary', onClick: this.handleRedirect.bind(this) },
+        'Get started'
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var welcome = 'Welcome to Instalator!';
+      var description = 'The one stop to translate your manga and view them instantly!';
 
-	return MainPage;
+      return _react2.default.createElement(
+        'div',
+        { id: 'main-page-container' },
+        _react2.default.createElement(
+          _reactBootstrap.Grid,
+          { fluid: true },
+          _react2.default.createElement(
+            _reactBootstrap.Row,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Col,
+              { xs: 12 },
+              _react2.default.createElement(
+                _reactBootstrap.Carousel,
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Carousel.Item,
+                  null,
+                  _react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_1.png' }),
+                  _react2.default.createElement(
+                    _reactBootstrap.Carousel.Caption,
+                    null,
+                    _react2.default.createElement(
+                      'h3',
+                      { style: { textShadow: '2px 2px black' } },
+                      welcome
+                    ),
+                    description,
+                    this.renderGetStartBtn.call(this)
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.Carousel.Item,
+                  null,
+                  _react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_2.png' }),
+                  _react2.default.createElement(
+                    _reactBootstrap.Carousel.Caption,
+                    null,
+                    _react2.default.createElement(
+                      'h3',
+                      { style: { textShadow: '2px 2px black' } },
+                      welcome
+                    ),
+                    description,
+                    this.renderGetStartBtn.call(this)
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.Carousel.Item,
+                  null,
+                  _react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_3.png' }),
+                  _react2.default.createElement(
+                    _reactBootstrap.Carousel.Caption,
+                    null,
+                    _react2.default.createElement(
+                      'h3',
+                      { style: { textShadow: '2px 2px black' } },
+                      welcome
+                    ),
+                    description,
+                    this.renderGetStartBtn.call(this)
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Row,
+            null,
+            _react2.default.createElement(_Contact2.default, { standalone: 'none' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return MainPage;
 }(_react2.default.Component)) || _class);
 exports.default = MainPage;
 
