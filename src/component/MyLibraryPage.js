@@ -11,6 +11,8 @@ import {
     MenuItem,
     OverlayTrigger,
     Tooltip,
+    Popover,
+    ButtonGroup,
     Grid,
     Row,
     Col,
@@ -53,31 +55,55 @@ export default class MyLibraryPage extends React.Component {
     }
 	}
   
-  renderDeleteButton(document) {
+  renderDeleteButton(document, index) {
+    const overlayRef = 'overlay_' + index.toString();
     const handleDelete = function() {
       this.props.dispatch(actions.removeDocumentPersonal(document));
       this.props.dispatch(actions.setShareablePublic(document));
       publishNoti('info', 'Successfully deleted!');
+      this.refs[overlayRef].hide()
     }.bind(this);
+    
+    const popoverTop = (
+      <Popover id="popover-positioned-top" title="Delete file">
+        Are you sure you want to delete? <br /><br />
+        <Button 
+          bsStyle="danger" 
+          onClick={handleDelete}
+        >Yes</Button>
+        <Button 
+          onClick={function(event){ this.refs[overlayRef].hide();}.bind(this)}
+          style={{float: 'right'}}
+        >No</Button>
+      </Popover>
+    );
 
     return (
-      <Button
-        bsSize="sm"
-        bsStyle="danger"
-        onClick={handleDelete}
-      >Delete</Button>
+      <OverlayTrigger
+        trigger="click"
+        placement="top"
+        rootClose={true}
+        ref={overlayRef}
+        overlay={popoverTop}
+      >
+        <Button
+          bsSize="sm"
+          bsStyle="danger"
+          //onClick={handleDelete}
+        >Delete</Button>
+      </OverlayTrigger>
     );
 	}
 
 	renderTableHeader() {
 		return (
 			<thead>
-	            <tr>
-	                <th>Name</th>
-	                <th>Original Language</th>
-	                <th></th>
-	            </tr>
-	        </thead>
+        <tr>
+            <th>Name</th>
+            <th>Original Language</th>
+            <th></th>
+        </tr>
+      </thead>
 		);
 	}
 
@@ -123,10 +149,11 @@ export default class MyLibraryPage extends React.Component {
 
 	renderTableRow(record, idx) {
     const libraryLink = "/library/"+ record.name;
+    const key = `my-library-row-${idx}`;
     const popover = (<Tooltip id="tooltip"><div style={{height: '100%', maxHeight:'200px'}}><img style={{maxWidth:'100%', maxHeight:'100%',}} src={record.link[record.lang]} /></div></Tooltip>);
 
 		return (
-			<tr key={`my-library-row-${idx}`}>
+			<tr key={key}>
 				<td>
           <OverlayTrigger placement="right" overlay={popover}><a href={libraryLink}>{record.name}</a></OverlayTrigger>
 				</td>
@@ -143,7 +170,7 @@ export default class MyLibraryPage extends React.Component {
 					>
 						Share
 					</Button> 
-          {this.renderDeleteButton.bind(this)(record)}
+          {this.renderDeleteButton.bind(this)(record, idx)}
 				</td>
 			</tr>
 		);

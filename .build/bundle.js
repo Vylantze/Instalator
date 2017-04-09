@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "dce549d1a9eedc455d38"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3d1c006b84abd548719c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -41742,21 +41742,59 @@ var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
     }
   }, {
     key: 'renderDeleteButton',
-    value: function renderDeleteButton(document) {
+    value: function renderDeleteButton(document, index) {
+      var overlayRef = 'overlay_' + index.toString();
       var handleDelete = function () {
         this.props.dispatch(_actions2.default.removeDocumentPersonal(document));
         this.props.dispatch(_actions2.default.setShareablePublic(document));
         (0, _notificationUtil.publishNoti)('info', 'Successfully deleted!');
+        this.refs[overlayRef].hide();
       }.bind(this);
 
+      var popoverTop = _react2.default.createElement(
+        _reactBootstrap.Popover,
+        { id: 'popover-positioned-top', title: 'Delete file' },
+        'Are you sure you want to delete? ',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          {
+            bsStyle: 'danger',
+            onClick: handleDelete
+          },
+          'Yes'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          {
+            onClick: function (event) {
+              this.refs[overlayRef].hide();
+            }.bind(this),
+            style: { float: 'right' }
+          },
+          'No'
+        )
+      );
+
       return _react2.default.createElement(
-        _reactBootstrap.Button,
+        _reactBootstrap.OverlayTrigger,
         {
-          bsSize: 'sm',
-          bsStyle: 'danger',
-          onClick: handleDelete
+          trigger: 'click',
+          placement: 'top',
+          rootClose: true,
+          ref: overlayRef,
+          overlay: popoverTop
         },
-        'Delete'
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          {
+            bsSize: 'sm',
+            bsStyle: 'danger'
+            //onClick={handleDelete}
+          },
+          'Delete'
+        )
       );
     }
   }, {
@@ -41837,6 +41875,7 @@ var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
       var _this3 = this;
 
       var libraryLink = "/library/" + record.name;
+      var key = 'my-library-row-' + idx;
       var popover = _react2.default.createElement(
         _reactBootstrap.Tooltip,
         { id: 'tooltip' },
@@ -41849,7 +41888,7 @@ var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
 
       return _react2.default.createElement(
         'tr',
-        { key: 'my-library-row-' + idx },
+        { key: key },
         _react2.default.createElement(
           'td',
           null,
@@ -41884,7 +41923,7 @@ var MyLibraryPage = (_dec = (0, _reactRedux.connect)(function (state) {
             },
             'Share'
           ),
-          this.renderDeleteButton.bind(this)(record)
+          this.renderDeleteButton.bind(this)(record, idx)
         )
       );
     }
