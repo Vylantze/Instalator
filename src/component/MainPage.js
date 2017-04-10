@@ -32,6 +32,13 @@ export default class MainPage extends React.Component {
   render() {
     const welcome = 'Welcome to Instalator!';
     const description = 'The one stop to translate your manga and view them instantly!';
+    const carousel_caption = (
+      <Carousel.Caption style={{ textShadow: '2px 2px black'}}>
+        <h3>{welcome}</h3>
+        {description}<br />
+        {::this.renderGetStartBtn()}
+      </Carousel.Caption>
+    );
 
     return (
         <div id="main-page-container">
@@ -41,27 +48,15 @@ export default class MainPage extends React.Component {
               <Carousel>
               <Carousel.Item>
                   <img width={1200} height={500} alt="900x500" src="/public/img/carousel_1.png"/>
-                  <Carousel.Caption>
-                    <h3 style={{ textShadow: '2px 2px black'}}>{welcome}</h3>
-                    {description}
-                    {::this.renderGetStartBtn()}
-                  </Carousel.Caption>
+                  {carousel_caption}
               </Carousel.Item>
               <Carousel.Item>
                   <img width={1200} height={500} alt="900x500" src="/public/img/carousel_2.png"/>
-                  <Carousel.Caption>
-                    <h3 style={{ textShadow: '2px 2px black'}}>{welcome}</h3>
-                    {description}
-                    {::this.renderGetStartBtn()}
-                  </Carousel.Caption>
+                  {carousel_caption}
               </Carousel.Item>
               <Carousel.Item>
                   <img width={1200} height={500} alt="900x500" src="/public/img/carousel_3.png"/>
-                  <Carousel.Caption>
-                    <h3 style={{ textShadow: '2px 2px black'}}>{welcome}</h3>
-                    {description}
-                    {::this.renderGetStartBtn()}
-                  </Carousel.Caption>
+                  {carousel_caption}
               </Carousel.Item>
 
             </Carousel>

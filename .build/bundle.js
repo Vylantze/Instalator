@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "010e4ae7023c35e11e80"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "87d99a84287932069cf7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -41628,6 +41628,18 @@ var MainPage = (_dec = (0, _reactRedux.connect)(function (state) {
     value: function render() {
       var welcome = 'Welcome to Instalator!';
       var description = 'The one stop to translate your manga and view them instantly!';
+      var carousel_caption = _react2.default.createElement(
+        _reactBootstrap.Carousel.Caption,
+        { style: { textShadow: '2px 2px black' } },
+        _react2.default.createElement(
+          'h3',
+          null,
+          welcome
+        ),
+        description,
+        _react2.default.createElement('br', null),
+        this.renderGetStartBtn.call(this)
+      );
 
       return _react2.default.createElement(
         'div',
@@ -41648,49 +41660,19 @@ var MainPage = (_dec = (0, _reactRedux.connect)(function (state) {
                   _reactBootstrap.Carousel.Item,
                   null,
                   _react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_1.png' }),
-                  _react2.default.createElement(
-                    _reactBootstrap.Carousel.Caption,
-                    null,
-                    _react2.default.createElement(
-                      'h3',
-                      { style: { textShadow: '2px 2px black' } },
-                      welcome
-                    ),
-                    description,
-                    this.renderGetStartBtn.call(this)
-                  )
+                  carousel_caption
                 ),
                 _react2.default.createElement(
                   _reactBootstrap.Carousel.Item,
                   null,
                   _react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_2.png' }),
-                  _react2.default.createElement(
-                    _reactBootstrap.Carousel.Caption,
-                    null,
-                    _react2.default.createElement(
-                      'h3',
-                      { style: { textShadow: '2px 2px black' } },
-                      welcome
-                    ),
-                    description,
-                    this.renderGetStartBtn.call(this)
-                  )
+                  carousel_caption
                 ),
                 _react2.default.createElement(
                   _reactBootstrap.Carousel.Item,
                   null,
                   _react2.default.createElement('img', { width: 1200, height: 500, alt: '900x500', src: '/public/img/carousel_3.png' }),
-                  _react2.default.createElement(
-                    _reactBootstrap.Carousel.Caption,
-                    null,
-                    _react2.default.createElement(
-                      'h3',
-                      { style: { textShadow: '2px 2px black' } },
-                      welcome
-                    ),
-                    description,
-                    this.renderGetStartBtn.call(this)
-                  )
+                  carousel_caption
                 )
               )
             )
